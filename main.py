@@ -1,4 +1,5 @@
 from db.staging import *
+import os
 
 def main():
     """Função principal para executar o setup do Data Warehouse"""
@@ -9,11 +10,10 @@ def main():
             port=5432,
             database='acidente_trabalho_dw',
             user='postgres',
-            password='postgres'  # ALTERE PARA SUA SENHA
-        )
-        
+            password='99712003'  # ALTERE PARA SUA SENHA
+        )       
         # Caminho para a pasta de dados
-        data_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+        data_folder = os.path.join(os.path.dirname(__file__), 'data')
         
         logger.info("=== INICIANDO SETUP DO DATA WAREHOUSE ===")
         
@@ -28,9 +28,6 @@ def main():
         
         # 4. Carregar dados CSV
         dw_setup.load_csv_files(data_folder)
-        
-        # 5. Mostrar estatísticas
-        dw_setup.get_table_statistics()
         
         logger.info("=== SETUP CONCLUÍDO COM SUCESSO ===")
         
