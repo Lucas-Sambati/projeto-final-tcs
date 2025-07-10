@@ -1,4 +1,5 @@
 from db.staging import *
+from db.core import DataWarehouseSetup as CoreSetup
 import os
 
 def main():
@@ -29,7 +30,24 @@ def main():
         # 4. Carregar dados CSV
         dw_setup.load_csv_files(data_folder)
         
-        logger.info("=== SETUP CONCLUÍDO COM SUCESSO ===")
+        logger.info("=== SETUP DA STAGING CONCLUÍDO ===")
+        
+        # 5. Setup da tabela core
+        logger.info("=== INICIANDO SETUP DA TABELA CORE ===")
+        
+        core_setup = CoreSetup(
+            host='localhost',
+            port=5432,
+            database='acidente_trabalho_dw',
+            user='postgres',
+            password='99712003'  # ALTERE PARA SUA SENHA
+        )   
+        core_setup.create_core_table()
+
+        # 6. Carregar dados da staging para core
+        core_setup.load_data_from_staging_to_core()
+        
+        logger.info("=== SETUP COMPLETO CONCLUÍDO COM SUCESSO ===")
         
     except Exception as e:
         logger.error(f"Erro durante o setup: {e}")
