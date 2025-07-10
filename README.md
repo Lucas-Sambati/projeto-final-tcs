@@ -11,7 +11,9 @@ projeto-final-tcs/
 │   ├── D.SDA.PDA.005.CAT.202502.csv
 │   └── ...
 ├── db/                       # Scripts de banco de dados
-│   └── banco.py             # Script principal de setup
+│   └── access.py             # Script de setup 
+│   └── core.py               # Script de setup
+│   └── staging.py            # Script de setup
 ├── requirements.txt         # Dependências Python
 ├── .env.example            # Exemplo de configuração
 └── README.md               # Este arquivo
