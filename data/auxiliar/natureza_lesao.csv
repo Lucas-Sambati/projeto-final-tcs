@@ -1,0 +1,30 @@
+codigo,descricao
+702000000,Lesao imediata
+702005000,Escoriacao abrasao ferimento superficial
+702010000,Corte laceracao ferida contusa punctura ferida aberta
+702015000,Contusao esmagamento superficie cutanea intacta
+702020000,Distensao torcao
+702025000,Inflamacao de articulacao tendao ou musculo  inclui sinovite tenossionovite etc Nao inclui distensao torcao ou suas consequencias
+702030000,Luxacao
+702035000,Fratura
+702040000,Queimadura ou escaldadura  efeito de temperatura elevada Efeito do contato com substancia quente Inclui queimadura por eletricidade mas nao inclui choque eletrico Nao inclui queimadura por substancia quimica efeito de radiacao queimadura de sol incapacidade sistemica como intermacao queimadura por atrito etc
+702042000,Queimadura quimica lesao de tecido provocada pela acao corrosiva de produto quimico suas emanacoes etc
+702045000,Efeito de radiacao imediato  queimadura de sol e toda forma de lesao de tecido osso ou fluido organico por exposicao a radiacao
+702048000,Congelamento geladura e outros efeitos da exposicao a baixa temperatura
+702050000,Asfixia estrangulamento afogamento
+702055000,Intermacao insolacao caibra exaustao e outros efeitos da temperatura ambiente elevada  nao inclui queimadura de sol ou outros efeitos de radiacao
+702060000,Choque eletrico e eletroplessao eletrocussao
+702065000,Hernia de qualquer natureza ruptura
+702070000,Amputacao ou enucleacao
+702075000,Perda ou diminuicao de sentido audicao visao olfato paladar e tato desde que nao seja sequela de outra lesao
+702080000,Concussao cerebral
+702090000,Lesao imediata NIC
+704020000,Doenca contagiosa ou infecciosa tuberculose brucelose etc
+704030000,Pneumoconiose silicose asbestose etc
+704040000,Dermatose erupcao inflamacao da pele inclusive furunculo etc Geralmente provocada pelo contato direto com substancias ou agentes sensibilizantes ou irritantes tais como medicamentos oleos agentes biologicos plantas madeiras ou metais Nao inclui lesao provocada pela acao corrosiva de produtos quimicos queimadura por contato com substancias quentes efeito de exposicao a radiacao efeito de exposicao a baixas temperaturas ou inflamacao ou irritacao causada por friccao ou impacto
+704050000,Envenenamento sistemico  condicao morbida sistemica provocada por inalacao ingestao ou absorcao cutanea de substancia toxica que afete o metabolismo o funcionamento do sistema nervoso do aparelho circulatorio do aparelho digestivo do aparelho respiratorio dos orgaos de excrecao do sistema musculo esqueletico etc inclui acao de produto quimico medicamento metal ou peconha Nao inclui efeito de radiacao pneumoconiose efeito corrosivo de produto quimico irritacao cutanea septicemia ou caso de ferida infectada
+704060000,Perda ou diminuicao mediatas de sentido audicao visao olfato paladar e tato desde que nao seja sequela de outra lesao
+704070000,Efeito de radiacao mediato  queimadura do sol e toda forma de lesao de tecido osso ou fluido organico por exposicao a radiacao
+704090000,Doenca NIC
+706050000,Lesoes multiplas
+706090000,Outras lesoes NIC
