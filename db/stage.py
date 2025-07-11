@@ -299,12 +299,216 @@ class StageSetup:
             logger.error(f"Erro ao carregar arquivos CSV: {e}")
             raise
 
+    def create_stage_table_agente_causador(self):
+        """Cria a tabela de stage para agentes causadores"""
+        try:
+            with psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                user=self.user,
+                password=self.password,
+                client_encoding='latin1'
+            ) as conn:
+                cursor = conn.cursor()
+                # SQL para criar a tabela de stage
+                create_table_sql = """
+                CREATE TABLE IF NOT EXISTS schema_stage.agente_causador (
+                    agente_codigo INT PRIMARY KEY,
+                    agente_descricao VARCHAR
+                );
+                """
+                
+                cursor.execute(create_table_sql)
+                
+                conn.commit()
+                logger.info("Tabela schema_stage.agente_causador criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de stage agente_causador: {e}")
+            raise
+
+    def clean_and_normalize_data_agente_causador(self, df):
+        """Apenas renomeia as colunas"""
+        try:
+            # Mapear colunas para nomes padronizados
+            column_mapping = {
+                'codigo': 'agente_codigo',
+                'descricao': 'agente_descricao'
+            }
+            
+            # Renomear colunas
+            df = df.rename(columns=column_mapping)
+                        
+            logger.info(f"Colunas renomeadas e origem adicionada. Shape: {df.shape}")
+            return df
+            
+        except Exception as e:
+            logger.error(f"Erro ao processar dados: {e}")
+            raise
+    
+    def load_csv_file_agente_causador(self, data_folder_path):
+        """Carrega o arquivo CSV agente_causador para sua tabela de stage"""
+        try:
+            # Busca o arquivo CSV
+            csv_files = glob.glob(os.path.join(data_folder_path, "agente_causador.csv"))
+            
+            if not csv_files:
+                logger.warning(f"Nenhum arquivo CSV encontrado em {data_folder_path}")
+                return
+            
+            logger.info(f"Encontrado {len(csv_files)} arquivo CSV para processar")
+            
+            total_records = 0
+            
+            for csv_file in csv_files:
+                try:
+                    arquivo_nome = os.path.basename(csv_file)
+                    logger.info(f"Processando arquivo: {arquivo_nome}")
+                    
+                    # Ler CSV com encoding adequado
+                    df = pd.read_csv(csv_file, sep=',', encoding='latin-1', low_memory=False)
+                    logger.info(f"Colunas originais do CSV: {df.columns.tolist()}")
+                    
+                    logger.info(f"Arquivo {arquivo_nome} carregado com {len(df)} registros")
+                    
+                    # Limpar e normalizar dados
+                    df_clean = self.clean_and_normalize_data_agente_causador(df)
+                    
+                    # Carregar dados na tabela
+                    df_clean.to_sql(
+                        name='agente_causador',
+                        con=self.engine,
+                        schema='schema_stage',
+                        if_exists='append',
+                        index=False,
+                        method='multi',
+                        chunksize=1000
+                    )
+                    
+                    total_records += len(df_clean)
+                    logger.info(f"Arquivo {arquivo_nome} carregado com sucesso! {len(df_clean)} registros inseridos")
+                    
+                except Exception as e:
+                    logger.error(f"Erro ao processar arquivo {csv_file}: {e}")
+                    continue
+            
+            logger.info(f"Carga concluída! Total de registros inseridos: {total_records}")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar arquivos CSV: {e}")
+            raise
+    
+    def create_stage_table_natureza_lesao(self):
+        """Cria a tabela de stage para a natureza das lesões"""
+        try:
+            with psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                user=self.user,
+                password=self.password,
+                client_encoding='latin1'
+            ) as conn:
+                cursor = conn.cursor()
+                # SQL para criar a tabela de stage
+                create_table_sql = """
+                CREATE TABLE IF NOT EXISTS schema_stage.natureza_lesao (
+                    natureza_codigo INT PRIMARY KEY,
+                    natureza_descricao VARCHAR
+                );
+                """
+                
+                cursor.execute(create_table_sql)
+                
+                conn.commit()
+                logger.info("Tabela schema_stage.natureza_lesao criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de stage natureza_lesao: {e}")
+            raise
+
+    def clean_and_normalize_data_natureza_lesao(self, df):
+        """Apenas renomeia as colunas"""
+        try:
+            # Mapear colunas para nomes padronizados
+            column_mapping = {
+                'codigo': 'natureza_codigo',
+                'descricao': 'natureza_descricao'
+            }
+            
+            # Renomear colunas
+            df = df.rename(columns=column_mapping)
+                        
+            logger.info(f"Colunas renomeadas e origem adicionada. Shape: {df.shape}")
+            return df
+            
+        except Exception as e:
+            logger.error(f"Erro ao processar dados: {e}")
+            raise
+    
+    def load_csv_file_natureza_lesao(self, data_folder_path):
+        """Carrega o arquivo CSV natureza_lesao para sua tabela de stage"""
+        try:
+            # Busca o arquivo CSV
+            csv_files = glob.glob(os.path.join(data_folder_path, "natureza_lesao.csv"))
+            
+            if not csv_files:
+                logger.warning(f"Nenhum arquivo CSV encontrado em {data_folder_path}")
+                return
+            
+            logger.info(f"Encontrado {len(csv_files)} arquivo CSV para processar")
+            
+            total_records = 0
+            
+            for csv_file in csv_files:
+                try:
+                    arquivo_nome = os.path.basename(csv_file)
+                    logger.info(f"Processando arquivo: {arquivo_nome}")
+                    
+                    # Ler CSV com encoding adequado
+                    df = pd.read_csv(csv_file, sep=',', encoding='latin-1', low_memory=False)
+                    logger.info(f"Colunas originais do CSV: {df.columns.tolist()}")
+                    
+                    logger.info(f"Arquivo {arquivo_nome} carregado com {len(df)} registros")
+                    
+                    # Limpar e normalizar dados
+                    df_clean = self.clean_and_normalize_data_natureza_lesao(df)
+                    
+                    # Carregar dados na tabela
+                    df_clean.to_sql(
+                        name='natureza_lesao',
+                        con=self.engine,
+                        schema='schema_stage',
+                        if_exists='append',
+                        index=False,
+                        method='multi',
+                        chunksize=1000
+                    )
+                    
+                    total_records += len(df_clean)
+                    logger.info(f"Arquivo {arquivo_nome} carregado com sucesso! {len(df_clean)} registros inseridos")
+                    
+                except Exception as e:
+                    logger.error(f"Erro ao processar arquivo {csv_file}: {e}")
+                    continue
+            
+            logger.info(f"Carga concluída! Total de registros inseridos: {total_records}")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar arquivos CSV: {e}")
+            raise
+
     def create_stage_table_auxiliar(self):
         """Executa a criação das tabelas auxiliares"""
         self.create_stage_table_municipio()
+        self.create_stage_table_agente_causador()
+        self.create_stage_table_natureza_lesao()
     
     def load_csv_files_auxiliar(self):
         """Carrega os arquivos CSV das tabelas auxiliares"""
         data_folder = os.path.join(os.path.dirname(__file__), '../data/auxiliar')
 
         self.load_csv_file_municipio(data_folder)
+        self.load_csv_file_agente_causador(data_folder)
+        self.load_csv_file_natureza_lesao(data_folder)
