@@ -1,0 +1,249 @@
+codigo,descricao
+302010200,Rua e estrada - superficie utilizada para sustentar pessoas
+302010250,Calcada ou caminho para pedestre - superficie utilizada para sustentar pessoas
+302010300,Piso de edificio - superficie utilizada para sustentar pessoas
+302010350,"Escada permanente cujos degraus permitem apoio integral do pe, degrau - superficie utilizada para sustentar pessoas"
+302010400,Rampa - superficie utilizada para sustentar pessoas
+302010450,Passarela ou plataforma permanentes - superficie utilizada para sustentar pessoas
+302010500,Piso de mina - superficie utilizada para sustentar pessoas
+302010550,Chao - superficie utilizada para sustentar pessoas
+302010600,Piso de andaime e plataforma desmontavel - superficie utilizada para sustentar pessoas
+302010650,Piso de veiculo - superficie utilizada para sustentar pessoas
+302010700,Telhado
+302010900,"Superficie de sustentacao, NIC - superficie utilizada para sustentar pessoas"
+302030900,"Escada movel ou fixada, NIC"
+302050100,Edificio - edificio ou estrutura
+302050200,"Deposito fixo (tanque, silo, paiol, etc.) - edificio ou estrutura"
+302050300,"Cais, doca - edificio ou estrutura"
+302050400,"Dique, barragem - edificio ou estrutura"
+302050500,"Ponte, viaduto - edificio ou estrutura"
+302050600,"Arquibancada, estadio - edificio ou estrutura"
+302050700,"Andaime, plataforma - edificio ou estrutura"
+302050800,"Torre, poste - edificio ou estrutura"
+302050900,"Edificio ou estrutura (exceto piso, superficie de sustentacao ou area de circulacao), NIC"
+302070100,"Escavacao (para edificio, estrada, etc.)"
+302070300,"Canal, fosso"
+302070500,"Poco, entrada, galeria, etc., de mina"
+302070700,Tunel
+302070900,"Escavacao, fosso, tunel, NIC"
+302090000,"Superficie e estrutura, NIC"
+303010040,"Martelo, malho, marreta - ferramenta manual sem forca motriz"
+303010080,"Machadinha, enxo - ferramenta manual sem forca motriz"
+303010120,"Faca, facao - ferramenta manual sem forca motriz"
+303010160,"Tesoura, tesourao - ferramenta manual sem forca motriz"
+303010200,"Formao, cinzel - ferramenta manual sem forca motriz"
+303010240,"Serra, serrote - ferramenta manual sem forca motriz"
+303010280,"Alicate, torques, tenaz - ferramenta manual sem forca motriz"
+303010320,Plaina - ferramenta manual sem forca motriz
+303010360,"Lima, grosa - ferramenta manual sem forca motriz"
+303010400,"Puncao, ponteiro, vazador, talhadeira - ferramenta manual sem forca motriz"
+303010440,"Pua, trado, verruma, maquina de furar manual - ferramenta manual sem forca motriz"
+303010480,Chave de parafuso - ferramenta manual sem forca motriz
+303010520,"chave de porca ou de abertura regulavel, chave de boca - ferramenta manual sem forca motriz"
+303010560,"Alavanca, pe-de-cabra - ferramenta manual sem forca motriz"
+303010600,"Corda, cabo, corrente - ferramenta manual sem forca motriz"
+303010640,Machado - ferramenta manual sem forca motriz
+303010680,"Enxada, enxadao, sacho - ferramenta manual sem forca motriz"
+303010720,"Pa, cavadeira - ferramenta manual sem forca motriz"
+303010760,Picareta - ferramenta manual sem forca motriz
+303010800,"Garfo, ancinho, forcado - ferramenta manual sem forca motriz"
+303010900,"Ferramenta manual sem forca motriz, NIC"
+303015050,"Martelete, socador - ferramenta portatil com forca motriz ou aquecimento"
+303015100,Talhadeira - ferramenta portatil com forca motriz ou aquecimento
+303015150,"Cortadeira, guilhotina - ferramenta portatil com forca motriz ou aquecimento"
+303015200,Serra - ferramenta portatil com forca motriz ou aquecimento
+303015250,"Puncao, ponteiro, vazador - ferramenta portatil com forca motriz ou aquecimento"
+303015300,Perfuratriz - ferramenta portatil com forca motriz ou aquecimento
+303015350,Rebitadeira - ferramenta portatil com forca motriz ou aquecimento
+303015400,Maquina de aparafusar - ferramenta portatil com forca motriz ou aquecimento
+303015450,Esmeril - ferramenta portatil com forca motriz ou aquecimento
+303015500,"Politriz, enceradeira - ferramenta portatil com forca motriz ou aquecimento"
+303015550,Ferro de passar - ferramenta portatil com forca motriz ou aquecimento
+303015600,Ferramenta de soldagem - ferramenta portatil com forca motriz ou aquecimento
+303015650,Macarico - ferramenta portatil com forca motriz ou aquecimento
+303015700,Ferramenta acionada por explosivo - ferramenta portatil com forca motriz ou aquecimento
+303015750,Jato de areia - ferramenta portatil com forca motriz ou aquecimento
+303015900,"Ferramenta portatil com forca motriz ou aquecimento, NIC"
+303020040,Serra - maquina
+303020080,"Tesoura, guilhotina, maquina de cortar - maquina"
+303020120,"Laminadora, calandra - maquina"
+303020160,"Furadeira, broqueadeira, torno, freza - maquina"
+303020200,Prensa - maquina
+303020240,"Plaina, tupia - maquina"
+303020280,"Maquina de fundir, de forjar, de soldar"
+303020320,"Britador, moinho - maquina"
+303020360,"Misturador, batedeira, agitador - maquina"
+303020400,"Peneira mecanica, maquina separadora - maquina"
+303020440,"Politriz, lixadora, esmeril - maquina"
+303020480,Maquina de terraplenagem e construcao de estrada
+303020520,"Maquina de mineracao e perfuracao (de tunel, poco, etc.)"
+303020560,Maquina agricola
+303020600,Maquina textil
+303020640,Maquina de costurar e de pespontar
+303020680,Maquina de imprimir
+303020720,Maquina de escritorio
+303020760,Maquina de embalar ou empacotar
+303020900,"Maquina, NIC"
+303025300,Transportador por gravidade
+303025600,Transportador com forca motriz
+303025900,"Transportador, NIC"
+303030050,Guindaste - equipamento de guindar
+303030100,Ponte rolante - equipamento de guindar
+303030150,Elevador - equipamento de guindar
+303030200,Elevador de cacamba para mineracao - equipamento de guindar
+303030250,"Pa mecanica, draga - equipamento de guindar"
+303030300,Talha - equipamento de guindar
+303030350,Pau de carga - equipamento de guindar
+303030400,"Macaco (mecanico, hidraulico, pneumatico) - equipamento de guindar"
+303030450,Guincho pneumatico - equipamento de guindar
+303030500,Guincho eletrico - equipamento de guindar
+303030900,"Equipamento de guindar, NIC"
+303035300,Correia - dispositivo de transmissao de energia mecanica
+303035400,"Corrente, corda, cabo - dispositivo de transmissao de energia mecanica"
+303035500,"Tambor, polia, roldana - dispositivo de transmissao de energia mecanica"
+303035600,Embreagem de friccao - dispositivo de transmissao de energia mecanica
+303035700,Engrenagem - dispositivo de transmissao de energia mecanica
+303035900,"Dispositivo de transmissao de energia mecanica, NIC"
+303040100,Gerador - equipamento eletrico
+303040200,Condutor - equipamento eletrico
+303040300,"Transformador, conversor - equipamento eletrico"
+303040400,"Painel de controle, barramento, chave, interruptor, disjuntor, fusivel - equipamento eletrico"
+303040500,"Reostato, dispositivo de partida e aparelho de controle, capacitor, retificador, bateria de acumuladores - equipamento eletrico"
+303040600,Motor eletrico - equipamento eletrico
+303040700,Equipamento magnetico - equipamento eletrico
+303040750,Equipamento eletrolitico - equipamento eletrico
+303040800,Equipamento de aquecimento eletrico - equipamento eletrico
+303040900,"Equipamento eletrico, NIC"
+303045200,"Motor (combustao interna, vapor)"
+303045400,Bomba
+303045600,Turbina
+303045900,"Motor, bomba, turbina, NIC"
+303050200,Caldeira
+303050400,"Vaso sob pressao (para liquido, gas ou vapor)"
+303050600,"Tubo sob pressao (mangueira ou tubo para liquido, gas ou vapor)"
+303050900,"Caldeira, vaso sob pressao, NIC"
+303055200,Caixao pneumatico - equipamento para trabalho em ambiente de pressao anormal
+303055400,Escafandro - equipamento para trabalho em ambiente de pressao anormal
+303055600,Equipamento de mergulho - equipamento para trabalho em ambiente de pressao anormal
+303055900,"Equipamento para trabalho em ambiente de pressao anormal, NIC"
+303060000,"Forno, estufa, retorta, aquecedor de ambiente, fogao, etc., exceto quando a lesao principal for choque eletrico ou eletroplessao - equipamento de aquecimento"
+303065000,Equipamento emissor de radiacao nao ionizante
+303065300,Equipamento de iluminacao - equipamento emissor de radiacao nao ionizante
+303065600,Arco eletrico - equipamento emissor de radiacao nao ionizante
+303065900,"Equipamento emissor de radiacao nao ionizante, NIC"
+303066300,Equipamento de iluminacao
+303066600,Arco eletrico
+303070200,Equipamento de raios X - equipamento ou substancia emissores de radiacao ionizante
+303070400,Reator (inclui combustivel e residuo) - equipamento ou substancia emissores de radiacao ionizante
+303070600,Fonte de radioisotopo - equipamento ou substancia emissores de radiacao ionizante
+303070900,"Equipamento ou substancia emissores de radiacao ionizante, NIC"
+303075100,Bicicleta
+303075150,Triciclo
+303075200,"Motocicleta, motoneta"
+303075250,Veiculo rodoviario motorizado
+303075300,Veiculo sobre trilho
+303075350,Veiculo aquatico
+303075400,Aeronave
+303075450,Empilhadeira
+303075500,"Rebocador mecanico, mula mecanica"
+303075550,Carro-de-mao
+303075600,Trator
+303075650,Veiculo de terraplenagem
+303075700,Veiculo de tracao animal
+303075750,Veiculo deslizante
+303075800,Veiculo funicular (tracao por cabo)
+303075900,"Veiculo, NIC"
+303090000,"Ferramenta, maquina, equipamento, veiculo, NIC"
+305004100,"Composto metalico (de chumbo, mercurio, zinco, cadmio, cromo, etc.)"
+305004150,Composto de arsenio
+305004200,"Gas carbonico (dioxido de carbono, CO2)"
+305004250,Monoxido de carbono (CO)
+305004300,Oxidos de Nitrogenio (vapores nitrosos)
+305004350,Acido
+305004400,Alcali
+305004450,Composto de fosforo
+305004500,Dissulfeto de carbono
+305004550,Cianeto ou composto de cianogenio
+305004600,Alcool
+305004650,Tetracloreto de carbono
+305004700,"Composto organico halogenado (tricloretileno, percloretileno, cloreto de metilo, substancias refrigerantes)"
+305004750,"Composto aromatico (benzol, toluol, xilol, anilina, etc.)"
+305004900,"Substancia quimica, NIC"
+305008500,Agua - usar quando o estado liquido contribuir preponderantemente para a ocorrencia
+305008900,"Liquido, NIC"
+305020000,Particulas - nao identificadas
+305024100,"Pele, crina, pelo, la (em bruto) - produto animal"
+305024300,Pena - produto animal
+305024500,Couro cru ou curtido - produto animal
+305024700,Osso - produto animal
+305024900,"Produto animal, NIC"
+305028000,"Madeira (toro, madeira serrada, pranchao, poste, barrote, ripa e produto de madeira)"
+305032000,"Produto mineral metalico - produto de mineracao em bruto ou beneficiado, como minerio e concentrado de minerio"
+305032500,"Metal - inclui liga ferrosa e nao ferrosa, tubo, placa, perfil, trilho, vergalhao, arame, porca, rebite, prego, etc. inclui metal fundido, lingote e sucata de fundicao, exceto minerio"
+305036000,"Produto mineral nao metalico - produto de mineracao, escavacao, desbarrancamento, etc., como detrito, argila, areia, cascalho, pedra, etc."
+305040100,"Petroleo bruto, bruto reduzido"
+305040150,"Asfalto, alcatrao, piche"
+305040200,Oleo combustivel
+305040250,"Parafina, oleo lubrificante e de corte, graxas"
+305040300,"Gasoleo, oleo diesel"
+305040350,Querosene
+305040400,"Nafta e solvente de nafta (eter de petroleo, alcool mineral, solvente aromatico, etc.)"
+305040450,Gasolina (exceto quando a ocorrencia for causada preponderantemente por composto de chumbo)
+305040500,"Hidrocarboneto gasoso (inclui gas liquefeito, gas encanado de nafta, gas natural)"
+305040600,Carvao
+305040650,Coque
+305040700,Gas encanado de carvao
+305040900,"Produto de petroleo e de carvao, NIC"
+305044000,"Vidraria, fibra de vidro, lamina, etc., exceto frasco, garrafa"
+305048000,Ceramica
+305048300,Tijolo e telha - ceramica
+305048400,"Louca de mesa e outros utensilios (de porcelana, barro, etc.) - ceramica"
+305048500,"Tubo, manilha - ceramica"
+305048600,"Revestimento ceramico (azulejo, mosaico, etc.) - ceramica"
+305048700,"Louca sanitaria (pia, vaso sanitario, etc.) - ceramica"
+305048900,"Ceramica, NIC"
+305052000,"Texteis - inclui fibras animais apos o primeiro desengorduramento e limpeza, fibras vegetais e sinteticas (exceto vidro), fio, linha, tecido, passamanaria, feltro e produtos texteis em geral"
+305056000,"Plastico - inclui po, folha, trefilado, barra, perfil, etc., nao incluindo produto a ser usado no fabrico de plastico"
+305060000,Papel e pasta para papel
+305064000,Produtos alimenticios inclui carne leite e derivados legumes frutas cerais e derivados
+305064300,Carne e derivados - inclusive de origem animal
+305064400,Leite e derivados - inclusive de origem animal
+305064500,"Legume, verdura e derivados"
+305064600,Fruta e derivados
+305064700,Cereal e derivados
+305064900,"Produto alimenticio - inclusive de origem animal, NIC"
+305068300,Medicamento em geral (exceto produto biologico)
+305068600,"Produto biologico (soro, toxina, antitoxina, vacina, plasma) - medicamento"
+305072000,"Produto de limpeza, sabao, detergente"
+305076000,"Sucata, entulho, residuo"
+305090000,"Substancia quimica, material, produto, NIC"
+306020000,Animal vivo
+306040000,"Vegetal - planta, arvore, em estado natural, nao beneficiada (nao inclui grao debulhado, fruto colhido, toro mesmo com galho)"
+306060000,"Agente infeccioso ou parasitario - inclui bacteria, fungo, organismo parasitario, virus, etc., nao incluindo produto quimico, preparado farmaceutico ou alimento"
+306090000,"Ser vivo, NIC"
+307030100,Cadeira banco - mobiliario e acessorios
+307030200,"Mesa, carteira, exceto mesa elastica desmontavel - mobiliario e acessorios"
+307030250,Mesa elastica desmontavel - mobiliario e acessorios
+307030300,"Balcao, bancada - mobiliario e acessorios"
+307030400,"Arquivo, fichario, estante - mobiliario e acessorios"
+307030500,"Tapete, forracao de piso, capacho - mobiliario e acessorios"
+307030600,"Luminaria, globo, lampada - mobiliario e acessorios"
+307030900,"Mobiliario e acessorios, NIC"
+307040100,"Caixa, engradado, caixote - embalagem, recipiente, vazio ou cheio"
+307040300,"Frasco, garrafa - embalagem, recipiente, vazio ou cheio"
+307040500,"Barril, barrica, barrilete, tambor - embalagem, recipiente, vazio ou cheio"
+307040700,"Tanque, cilindro (transportaveis e nao sob pressao) - embalagem, recipiente, vazio ou cheio"
+307040900,"Embalagem e recipiente, vazio ou cheio, NIC"
+307050900,"Vestuario, NIC"
+307070000,"Area ou ambiente de trabalho - o agente do acidente ocorrido em consequencia de fenomeno atmosferico, meteoro, etc., assim como da acao da radiacao solar, devera ser incluido neste item"
+309000000,"Agente do acidente, NIC"
+309500000,Agente do acidente inexistente
+354000000,Energia
+354010300,Pressao ambiente alta trabalho em caixao pneumatico mergulho
+354010600,Pressao ambiente baixa ar rarefeito
+354020000,Ruido
+354040000,Fogo chama material incandescente ou quente fumaca
+354050300,Temperatura ambiente - nao inclui a de objeto ou substancia quente
+355016000,Aerodispersoides
+355016600,Neblina
+355016800,Gas e vapor

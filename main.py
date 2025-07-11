@@ -2,35 +2,38 @@ from db.datawarehouse import DataWarehouseSetup
 from db.stage import StageSetup
 from db.core import CoreSetup
 from db.stage import logger
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 def main():
     """Função principal para executar o setup do Data Warehouse"""
     try:
         # Configurações do banco
         dw_setup = DataWarehouseSetup(
-            host='localhost',
-            port=5432,
-            database='acidente_trabalho_dw',
-            user='postgres',
-            password='postgres'  # ALTERE PARA SUA SENHA
+            host=os.getenv('DB_HOST'),
+            port=int(os.getenv('DB_PORT')), 
+            database=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD')
         )       
 
         stage_setup = StageSetup(
-            host='localhost',
-            port=5432,
-            database='acidente_trabalho_dw',
-            user='postgres',
-            password='postgres'  # ALTERE PARA SUA SENHA
+            host=os.getenv('DB_HOST'),
+            port=int(os.getenv('DB_PORT')), 
+            database=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD')
         )   
 
         core_setup = CoreSetup(
-            host='localhost',
-            port=5432,
-            database='acidente_trabalho_dw',
-            user='postgres',
-            password='postgres'  # ALTERE PARA SUA SENHA
-        )     
+            host=os.getenv('DB_HOST'),
+            port=int(os.getenv('DB_PORT')), 
+            database=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD')
+        )    
 
         # Caminho para a pasta de dados
         data_folder = os.path.join(os.path.dirname(__file__), 'data/acidente')
