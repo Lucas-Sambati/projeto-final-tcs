@@ -119,6 +119,29 @@ class CoreSetup:
             raise
         finally:
             self.close_connection(cursor)
+
+    def create_core_table_cid10(self):
+        """Cria a tabela de core para CID10"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a tabela de core
+            create_table_sql = """
+            CREATE TABLE IF NOT EXISTS schema_core.cid10 (
+                cid10_codigo TEXT PRIMARY KEY,
+                cid10_descricao TEXT
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("Tabela schema_core.cid10 criada com sucesso!")
+                    
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de core: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
     
     def clean_and_normalize_data_acidente(self, df):
         """
@@ -187,6 +210,42 @@ class CoreSetup:
         except Exception as e:
             logger.error(f"Erro ao limpar e normalizar dados: {e}")
             raise
+
+    def clean_and_normalize_data_cid10(self, df):
+        """
+        Limpa e normaliza os dados da tabela `cid10` da stage
+        
+        Args:
+            df (pd.DataFrame): DataFrame com os dados da stage
+        
+        Returns:
+            pd.DataFrame: DataFrame limpo e normalizado
+        """
+        try:
+            logger.info("Iniciando limpeza e normalização dos dados")
+            
+            # Fazer uma cópia para não modificar o original
+            df_clean = df.copy()
+            
+            # Remover espaços em branco das colunas de texto
+            text_columns = ['cid10_descricao']
+            
+            for col in text_columns:
+                if col in df_clean.columns:
+                    df_clean[col] = df_clean[col].astype(str).str.strip().str.upper()
+                    # Substituir strings vazias por None
+                    df_clean[col] = df_clean[col].replace('', 'DESCONHECIDO')
+                    df_clean[col] = df_clean[col].replace('NAN', 'DESCONHECIDO')
+                    df_clean[col] = df_clean[col].replace('NONE', 'DESCONHECIDO')
+                    df_clean[col] = df_clean[col].replace('{Ñ CLASS}', 'DESCONHECIDO')
+
+            logger.info(f"Dados limpos e normalizados. Shape final: {df_clean.shape}")
+            return df_clean
+            
+        except Exception as e:
+            logger.error(f"Erro ao limpar e normalizar dados: {e}")
+            raise
+
     
     def load_data_from_stage_to_core_acidente(self, batch_size=1000):
         """
@@ -425,11 +484,87 @@ class CoreSetup:
             raise
         finally:
             self.close_connection(cursor)
+    
+    def load_data_from_stage_to_core_cid10(self, batch_size=1000):
+        """
+        Carrega dados da tabela de stage (cid10), trata e insere na tabela core (cid10)
+        
+        Args:
+            batch_size (int): Tamanho do lote para processamento
+        """
+        try:
+            logger.info("Iniciando carregamento de dados da staging para core")
+            
+            # Verificar se há dados na stage
+            cursor = self.get_connection()
+            cursor.execute("SELECT COUNT(*) as count FROM schema_stage.cid10")
+            result = cursor.fetchone()
+            total_records = result['count']
+            
+            if total_records == 0:
+                logger.warning("Nenhum dado encontrado na tabela stage cid10")
+                return
+            
+            logger.info(f"Total de registros na tabela stage cid10: {total_records}")
+            
+            self.close_connection(cursor)
+            
+            # Processar dados em lotes
+            offset = 0
+            total_inserted = 0
+            
+            while offset < total_records:
+                try:
+                    # Carregar lote de dados da staging
+                    query = f"""
+                    SELECT cid10_codigo, cid10_descricao
+                    FROM schema_stage.cid10
+                    ORDER BY cid10_codigo
+                    LIMIT {batch_size} OFFSET {offset}
+                    """
+                    
+                    df_batch = pd.read_sql(query, self.engine)
+                    
+                    if df_batch.empty:
+                        break
+                    
+                    # Limpar e normalizar dados
+                    df_clean = self.clean_and_normalize_data_cid10(df_batch)
+                    
+                    # Inserir na tabela core
+                    df_clean.to_sql(
+                        name='cid10',
+                        con=self.engine,
+                        schema='schema_core',
+                        if_exists='append',
+                        index=False,
+                        method='multi'
+                    )
+                    
+                    total_inserted += len(df_clean)
+                    offset += batch_size
+                    
+                    logger.info(f"Processado lote: {offset}/{total_records} registros. Inseridos: {total_inserted}")
+                    
+                except Exception as e:
+                    logger.error(f"Erro ao processar lote offset {offset}: {e}")
+                    raise
+            
+            logger.info(f"Carregamento concluído! Total de registros inseridos na core cid10: {total_inserted}")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar dados da staging para core cid10: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
 
     def create_core_table_auxiliar(self):
         """Executa a criação das tabelas auxiliares no core"""
         self.create_core_table_municipio()
+        self.create_core_table_cid10()
     
     def load_data_from_stage_to_core_auxiliar(self):
         """Carrega os dados das tabelas auxiliares do stage para o core"""
         self.load_data_from_stage_to_core_municipio()
+        self.load_data_from_stage_to_core_cid10()

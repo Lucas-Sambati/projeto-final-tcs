@@ -13,7 +13,7 @@ def main():
             port=5432,
             database='acidente_trabalho_dw',
             user='postgres',
-            password='99712003'  # ALTERE PARA SUA SENHA
+            password='postgres'  # ALTERE PARA SUA SENHA
         )       
 
         stage_setup = StageSetup(
@@ -21,7 +21,7 @@ def main():
             port=5432,
             database='acidente_trabalho_dw',
             user='postgres',
-            password='99712003'  # ALTERE PARA SUA SENHA
+            password='postgres'  # ALTERE PARA SUA SENHA
         )   
 
         core_setup = CoreSetup(
@@ -29,7 +29,7 @@ def main():
             port=5432,
             database='acidente_trabalho_dw',
             user='postgres',
-            password='99712003'  # ALTERE PARA SUA SENHA
+            password='postgres'  # ALTERE PARA SUA SENHA
         )     
 
         # Caminho para a pasta de dados

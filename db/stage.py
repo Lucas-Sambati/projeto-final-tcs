@@ -299,12 +299,83 @@ class StageSetup:
             logger.error(f"Erro ao carregar arquivos CSV: {e}")
             raise
 
+        # Função para criar a tabela CID10
+    def create_stage_table_cid10(self):
+        try:
+            with psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                user=self.user,
+                password=self.password,
+                client_encoding='latin1'
+            ) as conn:
+                cursor = conn.cursor()
+                
+                # SQL para criar a tabela CID10
+                create_table_sql = """
+                CREATE TABLE IF NOT EXISTS schema_stage.cid10 (
+                    cid10_codigo TEXT PRIMARY KEY,
+                    cid10_descricao TEXT
+                );
+                """
+                
+                cursor.execute(create_table_sql)        
+                
+                conn.commit()
+                logger.info("Tabela schema_stage.cid10 criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela CID10: {e}")
+            raise
+
+    def load_csv_file_cid10(self, data_folder_path):
+        """Carrega os dados do CSV CID10 na tabela CID10"""
+        try:
+            # Buscar o arquivo CSV
+            csv_files = glob.glob(os.path.join(data_folder_path, "cid10.csv"))
+            
+            if not csv_files:
+                logger.warning(f"Nenhum arquivo CSV encontrado em {data_folder_path}")
+                return
+            
+            # Pegando o primeiro arquivo encontrado (caso haja mais de um)
+            csv_file = csv_files[0]
+            logger.info(f"Processando arquivo: {csv_file}")
+            
+            # Ler CSV com encoding adequado
+            df = pd.read_csv(csv_file, sep=',', encoding='latin-1')
+            logger.info(f"Arquivo CID10 carregado com {len(df)} registros")
+            
+            # Renomear colunas
+            df = df.rename(columns={'SUBCAT': 'cid10_codigo', 'DESCRICAO': 'cid10_descricao'})
+            
+            # Carregar dados na tabela CID10
+            df.to_sql(
+                name='cid10',
+                con=self.engine,
+                schema='schema_stage',
+                if_exists='append',
+                index=False,
+                method='multi',
+                chunksize=1000
+            )
+            
+            logger.info(f"Dados CID10 carregados com sucesso! {len(df)} registros inseridos")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar dados CID10: {e}")
+            raise
+
+
     def create_stage_table_auxiliar(self):
         """Executa a criação das tabelas auxiliares"""
         self.create_stage_table_municipio()
+        self.create_stage_table_cid10()
     
     def load_csv_files_auxiliar(self):
         """Carrega os arquivos CSV das tabelas auxiliares"""
         data_folder = os.path.join(os.path.dirname(__file__), '../data/auxiliar')
 
         self.load_csv_file_municipio(data_folder)
+        self.load_csv_file_cid10(data_folder)
