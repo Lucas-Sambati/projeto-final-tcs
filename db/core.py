@@ -105,7 +105,6 @@ class CoreSetup:
                 uf_municipio_acidente VARCHAR,
                 uf_municipio_empregador VARCHAR,
                 data_nascimento DATE,
-                data_emissao_cat DATE,
                 data_carga TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (municipio_empregador) REFERENCES schema_core.municipio (municipio_ibge_codigo)
             );
@@ -152,7 +151,7 @@ class CoreSetup:
                     df_clean[col] = df_clean[col].replace('{Ñ CLASS}', 'DESCONHECIDO')
             
             # Tratar datas
-            date_columns = ['data_acidente', 'data_nascimento', 'data_emissao_cat']
+            date_columns = ['data_acidente', 'data_nascimento']
             for col in date_columns:
                 if col in df_clean.columns:
                     df_clean[col] = pd.to_datetime(df_clean[col], errors='coerce', dayfirst=True)
@@ -175,8 +174,7 @@ class CoreSetup:
             core_columns = ['agente_causador_acidente', 'data_acidente', 'cid_10_codigo',
                           'cnae_empregador_codigo', 'indica_obito_acidente', 'municipio_empregador',
                           'natureza_lesao', 'parte_corpo_atingida', 'sexo', 'tipo_acidente',
-                          'uf_municipio_acidente', 'uf_municipio_empregador', 'data_nascimento',
-                          'data_emissao_cat']
+                          'uf_municipio_acidente', 'uf_municipio_empregador', 'data_nascimento']
             
             # Filtrar apenas as colunas que existem no DataFrame
             available_columns = [col for col in core_columns if col in df_clean.columns]
@@ -262,8 +260,7 @@ class CoreSetup:
                     SELECT agente_causador_acidente, data_acidente, cid_10_codigo,
                            cnae_empregador_codigo, indica_obito_acidente, municipio_empregador,
                            natureza_lesao, parte_corpo_atingida, sexo, tipo_acidente,
-                           uf_municipio_acidente, uf_municipio_empregador, data_nascimento,
-                           data_emissao_cat
+                           uf_municipio_acidente, uf_municipio_empregador, data_nascimento
                     FROM schema_stage.acidente_trabalho
                     ORDER BY id
                     LIMIT {batch_size} OFFSET {offset}
