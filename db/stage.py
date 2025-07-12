@@ -70,14 +70,14 @@ class StageSetup:
                     especie_beneficio VARCHAR,
                     filiacao_segurado VARCHAR,
                     indica_obito_acidente VARCHAR,
-                    municipio_empregador VARCHAR,
+                    municipio_empregador_codigo VARCHAR,
                     natureza_lesao VARCHAR,
                     origem_cadastramento_cat VARCHAR,
                     parte_corpo_atingida VARCHAR,
                     sexo VARCHAR,
                     tipo_acidente VARCHAR,
-                    uf_municipio_acidente VARCHAR,
-                    uf_municipio_empregador VARCHAR,
+                    estado_acidente VARCHAR,
+                    estado_empregador VARCHAR,
                     data_afastamento VARCHAR,
                     data_despacho_beneficio VARCHAR,
                     data_acidente_duplicada VARCHAR,
@@ -115,14 +115,14 @@ class StageSetup:
                 'Espécie do benefício': 'especie_beneficio',
                 'Filiação Segurado': 'filiacao_segurado',
                 'Indica Óbito Acidente': 'indica_obito_acidente',
-                'Munic Empr': 'municipio_empregador',
+                'Munic Empr': 'municipio_empregador_codigo',
                 'Natureza da Lesão': 'natureza_lesao',
                 'Origem de Cadastramento CAT': 'origem_cadastramento_cat',
                 'Parte Corpo Atingida': 'parte_corpo_atingida',
                 'Sexo': 'sexo',
                 'Tipo do Acidente': 'tipo_acidente',
-                'UF  Munic.  Acidente': 'uf_municipio_acidente',
-                'UF Munic. Empregador': 'uf_municipio_empregador',
+                'UF  Munic.  Acidente': 'estado_acidente',
+                'UF Munic. Empregador': 'estado_empregador',
                 'Data  Afastamento': 'data_afastamento',
                 'Data Despacho Benefício': 'data_despacho_beneficio',
                 'Data Acidente.1': 'data_acidente_duplicada',
@@ -514,8 +514,8 @@ class StageSetup:
                 # SQL para criar a tabela CID10
                 create_table_sql = """
                 CREATE TABLE IF NOT EXISTS schema_stage.cid10 (
-                    cid10_codigo TEXT PRIMARY KEY,
-                    cid10_descricao TEXT
+                    cid10_codigo VARCHAR PRIMARY KEY,
+                    cid10_descricao VARCHAR
                 );
                 """
                 
