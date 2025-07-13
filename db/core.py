@@ -817,20 +817,6 @@ class CoreSetup:
             logger.info(f"Total de registros na tabela stage cid10: {total_records}")
             
             self.close_connection(cursor)
-
-            # Adiciona código de desconhecido
-            df_0 = pd.DataFrame({
-                'cid10_codigo': ['R533'],
-                'cid10_descricao': ['DESCONHECIDO']
-            })
-            df_0.to_sql(
-                name='cid10',
-                con=self.engine,
-                schema='schema_core',
-                if_exists='append',
-                index=False,
-                method='multi'
-            )
             
             # Processar dados em lotes
             offset = 0
