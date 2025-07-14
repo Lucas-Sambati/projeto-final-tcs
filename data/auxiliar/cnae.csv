@@ -1,0 +1,674 @@
+codigo;descricao
+0111;Cultivo de cereais
+0112;Cultivo de algodao herbaceo e de outras fibras de lavoura temporaria
+0113;Cultivo de cana-de-acucar
+0114;Cultivo de fumo
+0115;Cultivo de soja
+0116;Cultivo de oleaginosas de lavoura temporaria, exceto soja
+0119;Cultivo de plantas de lavoura temporaria nao especificadas anteriormente
+0121;Horticultura
+0122;Cultivo de flores e plantas ornamentais
+0131;Cultivo de laranja
+0132;Cultivo de uva
+0133;Cultivo de frutas de lavoura permanente, exceto laranja e uva
+0134;Cultivo de cafe
+0135;Cultivo de cacau
+0139;Cultivo de plantas de lavoura permanente nao especificadas anteriormente
+0141;Producao de sementes certificadas
+0142;Producao de mudas e outras formas de propagacao vegetal, certificadas
+0151;Criacao de bovinos
+152;Criacao de outros animais de grande porte
+0153;Criacao de caprinos e ovinos
+0154;Criacao de suinos
+0155;Criacao de aves
+0159;Criacao de animais nao especificados anteriormente
+0161;Atividades de apoio a agricultura
+0162;Atividades de apoio a pecuaria
+0163;Atividades de pos-colheita
+0170;Caca e servicos relacionados
+0210;Producao florestal - florestas plantadas
+0220;Producao florestal - florestas nativas
+0230;Atividades de apoio a producao florestal
+0311;Pesca em agua salgada
+0312;Pesca em agua doce
+0321;Aquicultura em agua salgada e salobra
+0322;Aquicultura em agua doce
+0500;Extracao de carvao mineral
+0600;Extracao de petroleo e gas natural
+0710;Extracao de minerio de ferro
+0721;Extracao de minerio de aluminio
+0722;Extracao de minerio de estanho
+0723;Extracao de minerio de manganes
+0724;Extracao de minerio de metais preciosos
+0725;Extracao de minerais radioativos
+0729;Extracao de minerais metalicos nao ferrosos nao especificados anteriormente
+0810;Extracao de pedra, areia e argila
+0891;Extracao de minerais para fabricacao de adubos, fertilizantes e outros produtos quimicos
+0892;Extracao e refino de sal marinho e sal-gema
+0893;Extracao de gemas (pedras preciosas e semipreciosas)
+0899;Extracao de minerais nao metalicos nao especificados anteriormente
+0910;Atividades de apoio a extracao de petroleo e gas natural
+0990;Atividades de apoio a extracao de minerais, exceto petroleo e gas natural
+1011;Abate de reses, exceto suinos
+1012;Abate de suinos, aves e outros pequenos animais
+1013;Fabricacao de produtos de carne
+1020;Preservacao do pescado e fabricacao de produtos do pescado
+1031;Fabricacao de conservas de frutas
+1032;Fabricacao de conservas de legumes e outros vegetais
+1033;Fabricacao de sucos de frutas, hortalicas e legumes
+1041;Fabricacao de oleos vegetais em bruto, exceto oleo de milho
+1042;Fabricacao de oleos vegetais refinados, exceto oleo de milho
+1043;Fabricacao de margarina e outras gorduras vegetais e de oleos nao comestiveis de animais
+1051;Preparacao do leite
+1052;Fabricacao de laticinios
+1053;Fabricacao de sorvetes e outros gelados comestiveis
+1061;Beneficiamento de arroz e fabricacao de produtos do arroz
+1062;Moagem de trigo e fabricacao de derivados
+1063;Fabricacao de farinha de mandioca e derivados
+1064;Fabricacao de farinha de milho e derivados, exceto oleos de milho
+1065;Fabricacao de amidos e feculas de vegetais e de oleos de milho
+1066;Fabricacao de alimentos para animais
+1069;Moagem e fabricacao de produtos de origem vegetal nao especificados anteriormente
+1071;Fabricacao de acucar em bruto
+1072;Fabricacao de acucar refinado
+1081;Torrefacao e moagem de cafe
+1082;Fabricacao de produtos a base de cafe
+1091;Fabricacao de produtos de panificacao
+1092;Fabricacao de biscoitos e bolachas
+1093;Fabricacao de produtos derivados do cacau, de chocolates e confeitos
+1094;Fabricacao de massas alimenticias
+1095;Fabricacao de especiarias, molhos, temperos e condimentos
+1096;Fabricacao de alimentos e pratos prontos
+1099;Fabricacao de produtos alimenticios nao especificados anteriormente
+1111;Fabricacao de aguardentes e outras bebidas destiladas
+1112;Fabricacao de vinho
+1113;Fabricacao de malte, cervejas e chopes
+1121;Fabricacao de aguas envasadas
+1122;Fabricacao de refrigerantes e de outras bebidas nao alcoolicas
+1210;Processamento industrial do fumo
+1220;Fabricacao de produtos do fumo
+1311;Preparacao e fiacao de fibras de algodao
+1312;Preparacao e fiacao de fibras texteis naturais, exceto algodao
+1313;Fiacao de fibras artificiais e sinteticas
+1314;Fabricacao de linhas para costurar e bordar
+1321;Tecelagem de fios de algodao
+1322;Tecelagem de fios de fibras texteis naturais, exceto algodao
+1323;Tecelagem de fios de fibras artificiais e sinteticas
+1330;Fabricacao de tecidos de malha
+1340;Acabamentos em fios, tecidos e artefatos texteis
+1351;Fabricacao de artefatos texteis para uso domestico
+1352;Fabricacao de artefatos de tapecaria
+1353;Fabricacao de artefatos de cordoaria
+1354;Fabricacao de tecidos especiais, inclusive artefatos
+1359;Fabricacao de outros produtos texteis nao especificados anteriormente
+1411;Confeccao de roupas intimas
+1412;Confeccao de pecas do vestuario, exceto roupas intimas
+1413;Confeccao de roupas profissionais
+1414;Fabricacao de acessorios do vestuario, exceto para seguranca e protecao
+1421;Fabricacao de meias
+1422;Fabricacao de artigos do vestuario, produzidos em malharias e tricotagens, exceto meias
+1510;Curtimento e outras preparacoes de couro
+1521;Fabricacao de artigos para viagem, bolsas e semelhantes de qualquer material
+1529;Fabricacao de artefatos de couro nao especificados anteriormente
+1531;Fabricacao de calcados de couro
+1532;Fabricacao de tenis de qualquer material
+1533;Fabricacao de calcados de material sintetico
+1539;Fabricacao de calcados de materiais nao especificados anteriormente
+1540;Fabricacao de partes para calcados, de qualquer material
+1610;Desdobramento de madeira
+1621;Fabricacao de madeira laminada e de chapas de madeira compensada, prensada e aglomerada
+1622;Fabricacao de estruturas de madeira e de artigos de carpintaria para construcao
+1623;Fabricacao de artefatos de tanoaria e de embalagens de madeira
+1629;Fabricacao de artefatos de madeira, palha, cortica, vime e material trancado nao especificados anteriormente, exceto moveis
+1710;Fabricacao de celulose e outras pastas para a fabricacao de papel
+1721;Fabricacao de papel
+1722;Fabricacao de cartolina e papel-cartao
+1731;Fabricacao de embalagens de papel
+1732;Fabricacao de embalagens de cartolina e papel-cartao
+1733;Fabricacao de chapas e de embalagens de papelao ondulado
+1741;Fabricacao de produtos de papel, cartolina, papel-cartao e papelao ondulado para uso comercial e de escritorio
+1742;Fabricacao de produtos de papel para usos domestico e higienico-sanitario
+1749;Fabricacao de produtos de pastas celulosicas, papel, cartolina, papel-cartao e papelao ondulado nao especificados anteriormente
+1811;Impressao de jornais, livros, revistas e outras publicacoes periodicas
+1812;Impressao de material de seguranca
+1813;Impressao de materiais para outros usos
+1821;Servicos de pre-impressao
+1822;Servicos de acabamentos graficos
+1830;Reproducao de materiais gravados em qualquer suporte
+1910;Coquerias
+1921;Fabricacao de produtos do refino de petroleo
+1922;Fabricacao de produtos derivados do petroleo, exceto produtos do refino
+1931;Fabricacao de alcool
+1932;Fabricacao de biocombustiveis, exceto alcool
+2011;Fabricacao de cloro e alcalis
+2012;Fabricacao de intermediarios para fertilizantes
+2013;Fabricacao de adubos e fertilizantes
+2014;Fabricacao de gases industriais
+2019;Fabricacao de produtos quimicos inorganicos nao especificados anteriormente
+2021;Fabricacao de produtos petroquimicos basicos
+2022;Fabricacao de intermediarios para plastificantes, resinas e fibras
+2029;Fabricacao de produtos quimicos organicos nao especificados anteriormente
+2031;Fabricacao de resinas termoplasticas
+2032;Fabricacao de resinas termofixas
+2033;Fabricacao de elastomeros
+2040;Fabricacao de fibras artificiais e sinteticas
+2051;Fabricacao de defensivos agricolas
+2052;Fabricacao de desinfestantes domissanitarios
+2061;Fabricacao de saboes e detergentes sinteticos
+2062;Fabricacao de produtos de limpeza e polimento
+2063;Fabricacao de cosmeticos, produtos de perfumaria e de higiene pessoal
+2071;Fabricacao de tintas, vernizes, esmaltes e lacas
+2072;Fabricacao de tintas de impressao
+2073;Fabricacao de impermeabilizantes, solventes e produtos afins
+2091;Fabricacao de adesivos e selantes
+2092;Fabricacao de explosivos
+2093;Fabricacao de aditivos de uso industrial
+2094;Fabricacao de catalisadores
+2099;Fabricacao de produtos quimicos nao especificados anteriormente
+2110;Fabricacao de produtos farmoquimicos
+2121;Fabricacao de medicamentos para uso humano
+2122;Fabricacao de medicamentos para uso veterinario
+2123;Fabricacao de preparacoes farmaceuticas
+2211;Fabricacao de pneumaticos e de camaras-de-ar
+2212;Reforma de pneumaticos usados
+2219;Fabricacao de artefatos de borracha nao especificados anteriormente
+2221;Fabricacao de laminados planos e tubulares de material plastico
+2222;Fabricacao de embalagens de material plastico
+2223;Fabricacao de tubos e acessorios de material plastico para uso na construcao
+2229;Fabricacao de artefatos de material plastico nao especificados anteriormente
+2311;Fabricacao de vidro plano e de seguranca
+2312;Fabricacao de embalagens de vidro
+2319;Fabricacao de artigos de vidro
+2320;Fabricacao de cimento
+2330;Fabricacao de artefatos de concreto, cimento, fibrocimento, gesso e materiais semelhantes
+2341;Fabricacao de produtos ceramicos refratarios
+2342;Fabricacao de produtos ceramicos nao refratarios para uso estrutural na construcao
+2349;Fabricacao de produtos ceramicos nao refratarios nao especificados anteriormente
+2391;Aparelhamento e outros trabalhos em pedras
+2392;Fabricacao de cal e gesso
+2399;Fabricacao de produtos de minerais nao metalicos nao especificados anteriormente
+2411;Producao de ferro-gusa
+2412;Producao de ferroligas
+2421;Producao de semiacabados de aco
+2422;Producao de laminados planos de aco
+2423;Producao de laminados longos de aco
+2424;Producao de relaminados, trefilados e perfilados de aco
+2431;Producao de tubos de aco com costura
+2439;Producao de outros tubos de ferro e aco
+2441;Metalurgia do aluminio e suas ligas
+2442;Metalurgia dos metais preciosos
+2443;Metalurgia do cobre
+2449;Metalurgia dos metais nao ferrosos e suas ligas nao especificados anteriormente
+2451;Fundicao de ferro e aco
+2452;Fundicao de metais nao ferrosos e suas ligas
+2511;Fabricacao de estruturas metalicas
+2512;Fabricacao de esquadrias de metal
+2513;Fabricacao de obras de caldeiraria pesada
+2521;Fabricacao de tanques, reservatorios metalicos e caldeiras para aquecimento central
+2522;Fabricacao de caldeiras geradoras de vapor, exceto para aquecimento central e para veiculos
+2531;Producao de forjados de aco e de metais nao ferrosos e suas ligas
+2532;Producao de artefatos estampados de metal
+2539;Servicos de usinagem, solda, tratamento e revestimento em metais
+2541;Fabricacao de artigos de cutelaria
+2542;Fabricacao de artigos de serralheria, exceto esquadrias
+2543;Fabricacao de ferramentas
+2550;Fabricacao de equipamento belico pesado, armas de fogo e municoes
+2591;Fabricacao de embalagens metalicas
+2592;Fabricacao de produtos de trefilados de metal
+2593;Fabricacao de artigos de metal para uso domestico e pessoal
+2599;Fabricacao de produtos de metal nao especificados anteriormente
+2610;Fabricacao de componentes eletronicos
+2621;Fabricacao de equipamentos de informatica
+2622;Fabricacao de perifericos para equipamentos de informatica
+2631;Fabricacao de equipamentos transmissores de comunicacao
+2632;Fabricacao de aparelhos telefonicos e de outros equipamentos de comunicacao
+2640;Fabricacao de aparelhos de recepcao, reproducao, gravacao e amplificacao de audio e video
+2651;Fabricacao de aparelhos e equipamentos de medida, teste e controle
+2652;Fabricacao de cronometros e relogios
+2660;Fabricacao de aparelhos eletromedicos e eletroterapeuticos e equipamentos de irradiacao
+2670;Fabricacao de equipamentos e instrumentos opticos, fotograficos e cinematograficos
+2680;Fabricacao de midias virgens, magneticas e opticas
+2710;Fabricacao de geradores, transformadores e motores eletricos
+2721;Fabricacao de pilhas, baterias e acumuladores eletricos, exceto para veiculos automotores
+2722;Fabricacao de baterias e acumuladores para veiculos automotores
+2731;Fabricacao de aparelhos e equipamentos para distribuicao e controle de energia eletrica
+2732;Fabricacao de material eletrico para instalacoes em circuito de consumo
+2733;Fabricacao de fios, cabos e condutores eletricos isolados
+2740;Fabricacao de lampadas e outros equipamentos de iluminacao
+2751;Fabricacao de fogoes, refrigeradores e maquinas de lavar e secar para uso domestico
+2759;Fabricacao de aparelhos eletrodomesticos nao especificados anteriormente
+2790;Fabricacao de equipamentos e aparelhos eletricos nao especificados anteriormente
+2811;Fabricacao de motores e turbinas, exceto para avioes e veiculos rodoviarios
+2812;Fabricacao de equipamentos hidraulicos e pneumaticos, exceto valvulas
+2813;Fabricacao de valvulas, registros e dispositivos semelhantes
+2814;Fabricacao de compressores
+2815;Fabricacao de equipamentos de transmissao para fins industriais
+2821;Fabricacao de aparelhos e equipamentos para instalacoes termicas
+2822;Fabricacao de maquinas, equipamentos e aparelhos para transporte e elevacao de cargas e pessoas
+2823;Fabricacao de maquinas e aparelhos de refrigeracao e ventilacao para uso industrial e comercial
+2824;Fabricacao de aparelhos e equipamentos de ar condicionado
+2825;Fabricacao de maquinas e equipamentos para saneamento basico e ambiental
+2829;Fabricacao de maquinas e equipamentos de uso geral nao especificados anteriormente
+2831;Fabricacao de tratores agricolas
+2832;Fabricacao de equipamentos para irrigacao agricola
+2833;Fabricacao de maquinas e equipamentos para a agricultura e pecuaria, exceto para irrigacao
+2840;Fabricacao de maquinas-ferramenta
+2851;Fabricacao de maquinas e equipamentos para a prospeccao e extracao de petroleo
+2852;Fabricacao de outras maquinas e equipamentos para uso na extracao mineral, exceto na extracao de petroleo
+2853;Fabricacao de tratores, exceto agricolas
+2854;Fabricacao de maquinas e equipamentos para terraplenagem, pavimentacao e construcao, exceto tratores
+2861;Fabricacao de maquinas para a industria metalurgica, exceto maquinas-ferramenta
+2862;Fabricacao de maquinas e equipamentos para as industrias de alimentos, bebidas e fumo
+2863;Fabricacao de maquinas e equipamentos para a industria textil
+2864;Fabricacao de maquinas e equipamentos para as industrias do vestuario, do couro e de calcados
+2865;Fabricacao de maquinas e equipamentos para as industrias de celulose, papel e papelao e artefatos
+2866;Fabricacao de maquinas e equipamentos para a industria do plastico
+2869;Fabricacao de maquinas e equipamentos para uso industrial especifico nao especificados anteriormente
+2910;Fabricacao de automoveis, camionetas e utilitarios
+2920;Fabricacao de caminhoes e onibus
+2930;Fabricacao de cabines, carrocerias e reboques para veiculos automotores
+2941;Fabricacao de pecas e acessorios para o sistema motor de veiculos automotores
+2942;Fabricacao de pecas e acessorios para os sistemas de marcha e transmissao de veiculos automotores
+2943;Fabricacao de pecas e acessorios para o sistema de freios de veiculos automotores
+2944;Fabricacao de pecas e acessorios para o sistema de direcao e suspensao de veiculos automotores
+2945;Fabricacao de material eletrico e eletronico para veiculos automotores, exceto baterias
+2949;Fabricacao de pecas e acessorios para veiculos automotores nao especificados anteriormente
+2950;Recondicionamento e recuperacao de motores para veiculos automotores
+3011;Construcao de embarcacoes e estruturas flutuantes
+3012;Construcao de embarcacoes para esporte e lazer
+3031;Fabricacao de locomotivas, vagoes e outros materiais rodantes
+3032;Fabricacao de pecas e acessorios para veiculos ferroviarios
+3041;Fabricacao de aeronaves
+3042;Fabricacao de turbinas, motores e outros componentes e pecas para aeronaves
+3050;Fabricacao de veiculos militares de combate
+3091;Fabricacao de motocicletas
+3092;Fabricacao de bicicletas e triciclos nao motorizados
+3099;Fabricacao de equipamentos de transporte nao especificados anteriormente
+3101;Fabricacao de moveis com predominancia de madeira
+3102;Fabricacao de moveis com predominancia de metal
+3103;Fabricacao de moveis de outros materiais, exceto madeira e metal
+3104;Fabricacao de colchoes
+3211;Lapidacao de gemas e fabricacao de artefatos de ourivesaria e joalheria
+3212;Fabricacao de bijuterias e artefatos semelhantes
+3220;Fabricacao de instrumentos musicais
+3230;Fabricacao de artefatos para pesca e esporte
+3240;Fabricacao de brinquedos e jogos recreativos
+3250;Fabricacao de instrumentos e materiais para uso medico e odontologico e de artigos opticos
+3291;Fabricacao de escovas, pinceis e vassouras
+3292;Fabricacao de equipamentos e acessorios para seguranca e protecao pessoal e profissional
+3299;Fabricacao de produtos diversos nao especificados anteriormente
+3311;Manutencao e reparacao de tanques, reservatorios metalicos e caldeiras, exceto para veiculos
+3312;Manutencao e reparacao de equipamentos eletronicos e opticos
+3313;Manutencao e reparacao de maquinas e equipamentos eletricos
+3314;Manutencao e reparacao de maquinas e equipamentos da industria mecanica
+3315;Manutencao e reparacao de veiculos ferroviarios
+3316;Manutencao e reparacao de aeronaves
+3317;Manutencao e reparacao de embarcacoes
+3319;Manutencao e reparacao de equipamentos e produtos nao especificados anteriormente
+3321;Instalacao de maquinas e equipamentos industriais
+3329;Instalacao de equipamentos nao especificados anteriormente
+3511;Geracao de energia eletrica
+3512;Transmissao de energia eletrica
+3513;Comercio atacadista de energia eletrica
+3514;Distribuicao de energia eletrica
+3520;Producao de gas
+3530;Producao e distribuicao de vapor, agua quente e ar condicionado
+3600;Captacao, tratamento e distribuicao de agua
+3701;Gestao de redes de esgoto
+3702;Atividades relacionadas a esgoto, exceto a gestao de redes
+3811;Coleta de residuos nao perigosos
+3812;Coleta de residuos perigosos
+3821;Tratamento e disposicao de residuos nao perigosos
+3822;Tratamento e disposicao de residuos perigosos
+3831;Recuperacao de materiais metalicos
+3832;Recuperacao de materiais plasticos
+3839;Recuperacao de materiais nao especificados anteriormente
+3900;Descontaminacao e outros servicos de gestao de residuos
+4110;Incorporacao de empreendimentos imobiliarios
+4120;Construcao de edificios
+4211;Construcao de rodovias e ferrovias
+4212;Construcao de obras de arte especiais
+4213;Obras de urbanizacao - ruas, pracas e calcadas
+4221;Obras para geracao e distribuicao de energia eletrica e para telecomunicacoes
+4222;Construcao de redes de abastecimento de agua, coleta de esgoto e construcoes correlatas
+4223;Construcao de redes de transportes por dutos, exceto para agua e esgoto
+4291;Obras portuarias, maritimas e fluviais
+4292;Montagem de instalacoes industriais e de estruturas metalicas
+4299;Obras de engenharia civil nao especificadas anteriormente
+4311;Demolicao e preparacao de canteiros de obras
+4312;Perfuracoes e sondagens
+4313;Obras de terraplenagem
+4319;Servicos de preparacao do terreno nao especificados anteriormente
+4321;Instalacoes eletricas
+4322;Instalacoes hidraulicas, de sistemas de ventilacao e refrigeracao
+4329;Obras de instalacoes em construcoes nao especificadas anteriormente
+4330;Obras de acabamento
+4391;Obras de fundacoes
+4399;Servicos especializados para construcao nao especificados anteriormente
+4511;Comercio a varejo e por atacado de veiculos automotores
+4512;Representantes comerciais e agentes do comercio de veiculos automotores
+4520;Manutencao e reparacao de veiculos automotores
+4530;Comercio de pecas e acessorios para veiculos automotores
+4541;Comercio por atacado e a varejo de motocicletas, pecas e acessorios
+4542;Representantes comerciais e agentes do comercio de motocicletas, pecas e acessorios
+4543;Manutencao e reparacao de motocicletas
+4611;Representantes comerciais e agentes do comercio de materias-primas agricolas e animais vivos
+4612;Representantes comerciais e agentes do comercio de combustiveis, minerais, produtos siderurgicos e quimicos
+4613;Representantes comerciais e agentes do comercio de madeira, material de construcao e ferragens
+4614;Representantes comerciais e agentes do comercio de maquinas, equipamentos, embarcacoes e aeronaves
+4615;Representantes comerciais e agentes do comercio de eletrodomesticos, moveis e artigos de uso domestico
+4616;Representantes comerciais e agentes do comercio de texteis, vestuario, calcados e artigos de viagem
+4617;Representantes comerciais e agentes do comercio de produtos alimenticios, bebidas e fumo
+4618;Representantes comerciais e agentes do comercio especializado em produtos nao especificados anteriormente
+4619;Representantes comerciais e agentes do comercio de mercadorias em geral nao especializado
+4621;Comercio atacadista de cafe em grao
+4622;Comercio atacadista de soja
+4623;Comercio atacadista de animais vivos, alimentos para animais e materias-primas agricolas, exceto cafe e soja
+4631;Comercio atacadista de leite e laticinios
+4632;Comercio atacadista de cereais e leguminosas beneficiados, farinhas, amidos e feculas
+4633;Comercio atacadista de hortifrutigranjeiros
+4634;Comercio atacadista de carnes, produtos da carne e pescado
+4635;Comercio atacadista de bebidas
+4636;Comercio atacadista de produtos do fumo
+4637;Comercio atacadista especializado em produtos alimenticios nao especificados anteriormente
+4639;Comercio atacadista de produtos alimenticios em geral
+4641;Comercio atacadista de tecidos, artefatos de tecidos e de armarinho
+4642;Comercio atacadista de artigos do vestuario e acessorios
+4643;Comercio atacadista de calcados e artigos de viagem
+4644;Comercio atacadista de produtos farmaceuticos para uso humano e veterinario
+4645;Comercio atacadista de instrumentos e materiais para uso medico, cirurgico, ortopedico e odontologico
+4646;Comercio atacadista de cosmeticos, produtos de perfumaria e de higiene pessoal
+4647;Comercio atacadista de artigos de escritorio e de papelaria
+4649;Comercio atacadista de equipamentos e artigos de uso pessoal e domestico nao especificados anteriormente
+4651;Comercio atacadista de computadores, perifericos e suprimentos de informatica
+4652;Comercio atacadista de componentes eletronicos e equipamentos de telefonia e comunicacao
+4661;Comercio atacadista de maquinas, aparelhos e equipamentos para uso agropecuario
+4662;Comercio atacadista de maquinas, equipamentos para terraplenagem, mineracao e construcao
+4663;Comercio atacadista de maquinas e equipamentos para uso industrial
+4664;Comercio atacadista de maquinas, aparelhos e equipamentos para uso odonto-medico-hospitalar
+4665;Comercio atacadista de maquinas e equipamentos para uso comercial
+4669;Comercio atacadista de maquinas, aparelhos e equipamentos nao especificados anteriormente
+4671;Comercio atacadista de madeira e produtos derivados
+4672;Comercio atacadista de ferragens e ferramentas
+4673;Comercio atacadista de material eletrico
+4674;Comercio atacadista de cimento
+4679;Comercio atacadista especializado de materiais de construcao nao especificados anteriormente e de materiais de construcao em geral
+4681;Comercio atacadista de combustiveis solidos, liquidos e gasosos, exceto gas natural e GLP
+4682;Comercio atacadista de gas liquefeito de petroleo (GLP)
+4683;Comercio atacadista de defensivos agricolas, adubos, fertilizantes e corretivos do solo
+4684;Comercio atacadista de produtos quimicos e petroquimicos, exceto agroquimicos
+4685;Comercio atacadista de produtos siderurgicos e metalurgicos, exceto para construcao
+4686;Comercio atacadista de papel e papelao em bruto e de embalagens
+4687;Comercio atacadista de residuos e sucatas
+4689;Comercio atacadista especializado de outros produtos intermediarios nao especificados anteriormente
+4691;Comercio atacadista de mercadorias em geral, com predominancia de produtos alimenticios
+4692;Comercio atacadista de mercadorias em geral, com predominancia de insumos agropecuarios
+4693;Comercio atacadista de mercadorias em geral, sem predominancia de alimentos ou de insumos agropecuarios
+4711;Comercio varejista de mercadorias em geral, com predominancia de produtos alimenticios - hipermercados e supermercados
+4712;Comercio varejista de mercadorias em geral, com predominancia de produtos alimenticios - minimercados, mercearias e armazens
+4713;Comercio varejista de mercadorias em geral, sem predominancia de produtos alimenticios
+4721;Comercio varejista de produtos de padaria, laticinio, doces, balas e semelhantes
+4722;Comercio varejista de carnes e pescados - acougues e peixarias
+4723;Comercio varejista de bebidas
+4724;Comercio varejista de hortifrutigranjeiros
+4729;Comercio varejista de produtos alimenticios em geral ou especializado em produtos alimenticios nao especificados anteriormente
+4731;Comercio varejista de combustiveis para veiculos automotores
+4732;Comercio varejista de lubrificantes
+4741;Comercio varejista de tintas e materiais para pintura
+4742;Comercio varejista de material eletrico
+4743;Comercio varejista de vidros
+4744;Comercio varejista de ferragens, madeira e materiais de construcao
+4751;Comercio varejista especializado de equipamentos e suprimentos de informatica
+4752;Comercio varejista especializado de equipamentos de telefonia e comunicacao
+4753;Comercio varejista especializado de eletrodomesticos e equipamentos de audio e video
+4754;Comercio varejista especializado de moveis, colchoaria e artigos de iluminacao
+4755;Comercio varejista especializado de tecidos e artigos de cama, mesa e banho
+4756;Comercio varejista especializado de instrumentos musicais e acessorios
+4757;Comercio varejista especializado de pecas e acessorios para aparelhos eletroeletronicos para uso domestico, exceto informatica e comunicacao
+4759;Comercio varejista de artigos de uso domestico nao especificados anteriormente
+4761;Comercio varejista de livros, jornais, revistas e papelaria
+4762;Comercio varejista de discos, CDs, DVDs e fitas
+4763;Comercio varejista de artigos recreativos e esportivos
+4771;Comercio varejista de produtos farmaceuticos para uso humano e veterinario
+4772;Comercio varejista de cosmeticos, produtos de perfumaria e de higiene pessoal
+4773;Comercio varejista de artigos medicos e ortopedicos
+4774;Comercio varejista de artigos de optica
+4781;Comercio varejista de artigos do vestuario e acessorios
+4782;Comercio varejista de calcados e artigos de viagem
+4783;Comercio varejista de joias e relogios
+4784;Comercio varejista de gas liqüefeito de petroleo (GLP)
+4785;Comercio varejista de artigos usados
+4789;Comercio varejista de outros produtos novos nao especificados anteriormente
+4790;Comercio ambulante e outros tipos de comercio varejista
+4911;Transporte ferroviario de carga
+4912;Transporte metroferroviario de passageiros
+4921;Transporte rodoviario coletivo de passageiros, com itinerario fixo, municipal e em regiao metropolitana
+4922;Transporte rodoviario coletivo de passageiros, com itinerario fixo, intermunicipal, interestadual e internacional
+4923;Transporte rodoviario de taxi
+4924;Transporte escolar
+4929;Transporte rodoviario coletivo de passageiros, sob regime de fretamento, e outros transportes rodoviarios nao especificados anteriormente
+4930;Transporte rodoviario de carga
+4940;Transporte dutoviario
+4950;Trens turisticos, telefericos e similares
+5011;Transporte maritimo de cabotagem
+5012;Transporte maritimo de longo curso
+5021;Transporte por navegacao interior de carga
+5022;Transporte por navegacao interior de passageiros em linhas regulares
+5030;Navegacao de apoio
+5091;Transporte por navegacao de travessia
+5099;Transportes aquaviarios nao especificados anteriormente
+5111;Transporte aereo de passageiros regular
+5112;Transporte aereo de passageiros nao regular
+5120;Transporte aereo de carga
+5130;Transporte espacial
+5211;Armazenamento
+5212;Carga e descarga
+5221;Concessionarias de rodovias, pontes, tuneis e servicos relacionados
+5222;Terminais rodoviarios e ferroviarios
+5223;Estacionamento de veiculos
+5229;Atividades auxiliares dos transportes terrestres nao especificadas anteriormente
+5231;Gestao de portos e terminais
+5232;Atividades de agenciamento maritimo
+5239;Atividades auxiliares dos transportes aquaviarios nao especificadas anteriormente
+5240;Atividades auxiliares dos transportes aereos
+5250;Atividades relacionadas a organizacao do transporte de carga
+5310;Atividades de Correio
+5320;Atividades de malote e de entrega
+5510;Hoteis e similares
+5590;Outros tipos de alojamento nao especificados anteriormente
+5611;Restaurantes e outros estabelecimentos de servicos de alimentacao e bebidas
+5612;Servicos ambulantes de alimentacao
+5620;Servicos de catering, bufe e outros servicos de comida preparada
+5811;Edicao de livros
+5812;Edicao de jornais
+5813;Edicao de revistas
+5819;Edicao de cadastros, listas e outros produtos graficos
+5821;Edicao integrada a impressao de livros
+5822;Edicao integrada a impressao de jornais
+5823;Edicao integrada a impressao de revistas
+5829;Edicao integrada a impressao de cadastros, listas e outros produtos graficos
+5911;Atividades de producao cinematografica, de videos e de programas de televisao
+5912;Atividades de pos-producao cinematografica, de videos e de programas de televisao
+5913;Distribuicao cinematografica, de video e de programas de televisao
+5914;Atividades de exibicao cinematografica
+5920;Atividades de gravacao de som e de edicao de musica
+6010;Atividades de radio
+6021;Atividades de televisao aberta
+6022;Programadoras e atividades relacionadas a televisao por assinatura
+6110;Telecomunicacoes por fio
+6120;Telecomunicacoes sem fio
+6130;Telecomunicacoes por satelite
+6141;Operadoras de televisao por assinatura por cabo
+6142;Operadoras de televisao por assinatura por micro-ondas
+6143;Operadoras de televisao por assinatura por satelite
+6190;Outras atividades de telecomunicacoes
+6201;Desenvolvimento de programas de computador sob encomenda
+6202;Desenvolvimento e licenciamento de programas de computador customizaveis
+6203;Desenvolvimento e licenciamento de programas de computador nao customizaveis
+6204;Consultoria em tecnologia da informacao
+6209;Suporte tecnico, manutencao e outros servicos em tecnologia da informacao
+6311;Tratamento de dados, provedores de servicos de aplicacao e servicos de hospedagem na Internet
+6319;Portais, provedores de conteudo e outros servicos de informacao na Internet
+6391;Agencias de noticias
+6399;Outras atividades de prestacao de servicos de informacao nao especificadas anteriormente
+6410;Banco Central
+6421;Bancos comerciais
+6422;Bancos multiplos, com carteira comercial
+6423;Caixas economicas
+6424;Credito cooperativo
+6431;Bancos multiplos, sem carteira comercial
+6432;Bancos de investimento
+6433;Bancos de desenvolvimento
+6434;Agencias de fomento
+6435;Credito imobiliario
+6436;Sociedades de credito, financiamento e investimento - financeiras
+6437;Sociedades de credito ao microempreendedor
+6438;Bancos de cambio e outras instituicoes de intermediacao nao monetaria
+6440;Arrendamento mercantil
+6450;Sociedades de capitalizacao
+6461;Holdings de instituicoes financeiras
+6462;Holdings de instituicoes nao financeiras
+6463;Outras sociedades de participacao, exceto holdings
+6470;Fundos de investimento
+6491;Sociedades de fomento mercantil - factoring
+6492;Securitizacao de creditos
+6493;Administracao de consorcios para aquisicao de bens e direitos
+6499;Outras atividades de servicos financeiros nao especificadas anteriormente
+6511;Seguros de vida
+6512;Seguros nao vida
+6520;Seguros-saude
+6530;Resseguros
+6541;Previdencia complementar fechada
+6542;Previdencia complementar aberta
+6550;Planos de saude
+6611;Administracao de bolsas e mercados de balcao organizados
+6612;Atividades de intermediarios em transacoes de titulos, valores mobiliarios e mercadorias
+6613;Administracao de cartoes de credito
+6619;Atividades auxiliares dos servicos financeiros nao especificadas anteriormente
+6621;Avaliacao de riscos e perdas
+6622;Corretores e agentes de seguros, de planos de previdencia complementar e de saude
+6629;Atividades auxiliares dos seguros, da previdencia complementar e dos planos de saude nao especificadas anteriormente
+6630;Atividades de administracao de fundos por contrato ou comissao
+6810;Atividades imobiliarias de imoveis proprios
+6821;Intermediacao na compra, venda e aluguel de imoveis
+6822;Gestao e administracao da propriedade imobiliaria
+6911;Atividades juridicas, exceto cartorios
+6912;Cartorios
+6920;Atividades de contabilidade, consultoria e auditoria contabil e tributaria
+7010;Sedes de empresas e unidades administrativas locais
+7020;Atividades de consultoria em gestao empresarial
+7111;Servicos de arquitetura
+7112;Servicos de engenharia
+7119;Atividades tecnicas relacionadas a arquitetura e engenharia
+7120;Testes e analises tecnicas
+7210;Pesquisa e desenvolvimento experimental em ciencias fisicas e naturais
+7220;Pesquisa e desenvolvimento experimental em ciencias sociais e humanas
+7311;Agencias de publicidade
+7312;Agenciamento de espacos para publicidade, exceto em veiculos de comunicacao
+7319;Atividades de publicidade nao especificadas anteriormente
+7320;Pesquisas de mercado e de opiniao publica
+7410;Design e decoracao de interiores
+7420;Atividades fotograficas e similares
+7490;Atividades profissionais, cientificas e tecnicas nao especificadas anteriormente
+7500;Atividades veterinarias
+7711;Locacao de automoveis sem condutor
+7719;Locacao de meios de transporte, exceto automoveis, sem condutor
+7721;Aluguel de equipamentos recreativos e esportivos
+7722;Aluguel de fitas de video, DVDs e similares
+7723;Aluguel de objetos do vestuario, joias e acessorios
+7729;Aluguel de objetos pessoais e domesticos nao especificados anteriormente
+7731;Aluguel de maquinas e equipamentos agricolas sem operador
+7732;Aluguel de maquinas e equipamentos para construcao sem operador
+7733;Aluguel de maquinas e equipamentos para escritorio
+7739;Aluguel de maquinas e equipamentos nao especificados anteriormente
+7740;Gestao de ativos intangiveis nao financeiros
+7810;Selecao e agenciamento de mao de obra
+7820;Locacao de mao de obra temporaria
+7830;Fornecimento e gestao de recursos humanos para terceiros
+7911;Agencias de viagens
+7912;Operadores turisticos
+7990;Servicos de reservas e outros servicos de turismo nao especificados anteriormente
+8011;Atividades de vigilancia e seguranca privada
+8012;Atividades de transporte de valores
+8020;Atividades de monitoramento de sistemas de seguranca
+8030;Atividades de investigacao particular
+8111;Servicos combinados para apoio a edificios, exceto condominios prediais
+8112;Condominios prediais
+8121;Limpeza em predios e em domicilios
+8122;Imunizacao e controle de pragas urbanas
+8129;Atividades de limpeza nao especificadas anteriormente
+8130;Atividades paisagisticas
+8211;Servicos combinados de escritorio e apoio administrativo
+8219;Fotocopias, preparacao de documentos e outros servicos especializados de apoio administrativo
+8220;Atividades de teleatendimento
+8230;Atividades de organizacao de eventos, exceto culturais e esportivos
+8291;Atividades de cobranca e informacoes cadastrais
+8292;Envasamento e empacotamento sob contrato
+8299;Atividades de servicos prestados principalmente as empresas nao especificadas anteriormente
+8411;Administracao publica em geral
+8412;Regulacao das atividades de saude, educacao, servicos culturais e outros servicos sociais
+8413;Regulacao das atividades economicas
+8421;Relacoes exteriores
+8422;Defesa
+8423;Justica
+8424;Seguranca e ordem publica
+8425;Defesa Civil
+8430;Seguridade social obrigatoria
+8511;Educacao infantil - creche
+8512;Educacao infantil - pre-escola
+8513;Ensino fundamental
+8520;Ensino medio
+8531;Educacao superior - graduacao
+8532;Educacao superior - graduacao e pos-graduacao
+8533;Educacao superior - pos-graduacao e extensao
+8541;Educacao profissional de nivel tecnico
+8542;Educacao profissional de nivel tecnologico
+8550;Atividades de apoio a educacao
+8591;Ensino de esportes
+8592;Ensino de arte e cultura
+8593;Ensino de idiomas
+8599;Atividades de ensino nao especificadas anteriormente
+8610;Atividades de atendimento hospitalar
+8621;Servicos moveis de atendimento a urgencias
+8622;Servicos de remocao de pacientes, exceto os servicos moveis de atendimento a urgencias
+8630;Atividades de atencao ambulatorial executadas por medicos e odontologos
+8640;Atividades de servicos de complementacao diagnostica e terapeutica
+8650;Atividades de profissionais da area de saude, exceto medicos e odontologos
+8660;Atividades de apoio a gestao de saude
+8690;Atividades de atencao a saude humana nao especificadas anteriormente
+8711;Atividades de assistencia a idosos, deficientes fisicos, imunodeprimidos e convalescentes prestadas em residencias coletivas e particulares
+8712;Atividades de fornecimento de infraestrutura de apoio e assistencia a paciente no domicilio
+8720;Atividades de assistencia psicossocial e a saude a portadores de disturbios psiquicos, deficiencia mental e dependencia quimica
+8730;Atividades de assistencia social prestadas em residencias coletivas e particulares
+8800;Servicos de assistencia social sem alojamento
+9001;Artes cenicas, espetaculos e atividades complementares
+9002;Criacao artistica
+9003;Gestao de espacos para artes cenicas, espetaculos e outras atividades artisticas
+9101;Atividades de bibliotecas e arquivos
+9102;Atividades de museus e de exploracao, restauracao artistica e conservacao de lugares e predios historicos e atracoes similares
+9103;Atividades de jardins botanicos, zoologicos, parques nacionais, reservas ecologicas e areas de protecao ambiental
+9200;Atividades de exploracao de jogos de azar e apostas
+9311;Gestao de instalacoes de esportes
+9312;Clubes sociais, esportivos e similares
+9313;Atividades de condicionamento fisico
+9319;Atividades esportivas nao especificadas anteriormente
+9321;Parques de diversao e parques tematicos
+9329;Atividades de recreacao e lazer nao especificadas anteriormente
+9411;Atividades de organizacoes associativas patronais e empresariais
+9412;Atividades de organizacoes associativas profissionais
+9420;Atividades de organizacoes sindicais
+9430;Atividades de associacoes de defesa de direitos sociais
+9491;Atividades de organizacoes religiosas
+9492;Atividades de organizacoes politicas
+9493;Atividades de organizacoes associativas ligadas a cultura e a arte
+9499;Atividades associativas nao especificadas anteriormente
+9511;Reparacao e manutencao de computadores e de equipamentos perifericos
+9512;Reparacao e manutencao de equipamentos de comunicacao
+9521;Reparacao e manutencao de equipamentos eletroeletronicos de uso pessoal e domestico
+9529;Reparacao e manutencao de objetos e equipamentos pessoais e domesticos nao especificados anteriormente
+9601;Lavanderias, tinturarias e toalheiros
+9602;Cabeleireiros e outras atividades de tratamento de beleza
+9603;Atividades funerarias e servicos relacionados
+9609;Atividades de servicos pessoais nao especificadas anteriormente
+9700;Servicos domesticos
+9900;Organismos internacionais e outras instituicoes extraterritoriais

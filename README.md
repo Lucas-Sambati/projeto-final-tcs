@@ -6,30 +6,36 @@ Este projeto implementa um Data Warehouse para análise de acidentes de trabalho
 
 ```
 projeto-final-tcs/
-├── data/                     # Arquivos CSV com dados de acidentes
+├── data/                               # Arquivos CSV principais (dados de acidentes)
 │   ├── D.SDA.PDA.005.CAT.202501.csv
 │   ├── D.SDA.PDA.005.CAT.202502.csv
 │   └── ...
-├── db/                       # Scripts de banco de dados
-│   └── access.py             # Script de setup 
-│   └── core.py               # Script de setup
-│   └── staging.py            # Script de setup
-├── requirements.txt         # Dependências Python
-├── .env.example            # Exemplo de configuração
-└── README.md               # Este arquivo
+├── auxiliar/                           # Arquivos CSV auxiliares (dados complementares)
+│   ├── agente_causador.csv
+│   ├── cid10.csv
+│   └── ...
+├── db/                                 # Scripts de banco de dados
+│   └── datawarehouse.py                # Script de setup do DW
+│   └── mart.py                         # Script de setup do schema mart
+│   └── core.py                         # Script de setup do schema core
+│   └── stage.py                        # Script de setup do schema stage
+├── main.py                             # Script principal responsável por rodar o código
+├── requirements.txt                    # Dependências Python
+├── .env                                # Configurações do database
+└── README.md                           # Este arquivo
 ```
 
 ## Arquitetura do Data Warehouse
 
 ### Schemas
 
-1. **schema_staging**: Área de staging para dados brutos
+1. **schema_stage**: Área de stage para dados brutos
 2. **schema_core**: Área de dados processados e modelados
-3. **schema_access**: Área de acesso para relatórios e dashboards
+3. **schema_mart**: Área de acesso para relatórios e dashboards
 
-### Tabela Staging
+### Tabela Stage
 
-A tabela `schema_staging.acidentes_trabalho` contém os seguintes campos padronizados:
+A tabela `schema_stage.acidentes_trabalho` contém os seguintes campos padronizados:
 
 - `id`: Chave primária sequencial
 - `agente_causador_acidente`: Agente causador do acidente
@@ -71,28 +77,29 @@ A tabela `schema_staging.acidentes_trabalho` contém os seguintes campos padroni
 ## Instalação
 
 ### 1. Clonar o repositório
+
 ```bash
 git clone <url-do-repositorio>
 cd projeto-final-tcs
 ```
 
 ### 2. Instalar dependências Python
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 3. Configurar banco de dados
-```bash
-# Copiar arquivo de configuração
-cp .env.example .env
 
+```bash
 # Editar .env com suas configurações
 notepad .env
 ```
 
-### 4. Executar o setup
+### 4. Executar o código
+
 ```bash
-python db/banco.py
+python main.py
 ```
 
 ## Uso
@@ -104,6 +111,7 @@ python db/banco.py
 ```
 
 O script irá:
+
 1. Criar o banco de dados `acidentes_trabalho_dw`
 2. Criar os schemas `schema_staging`, `schema_core`, `schema_access`
 3. Criar a tabela `schema_staging.acidentes_trabalho`
