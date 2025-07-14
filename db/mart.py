@@ -199,7 +199,7 @@ class MartSetup:
             CREATE OR REPLACE VIEW schema_mart.v_fato_acidentes_metricas AS(
             WITH acidentes AS (
             SELECT
-                EXTRACT(MONTH FROM data_acidente AS INTEGER) AS mes,
+                EXTRACT(MONTH FROM data_acidente)::INT AS mes,
                 indica_obito_acidente,
                 cid_10_codigo,
                 sexo,
@@ -390,14 +390,14 @@ class MartSetup:
 
     def create_mart_views(self):
         """Executa a criação das views no mart"""
-#        self.create_mart_view_fato_acidentes_mes_setor()
-#        self.create_mart_view_fato_acidentes_mes_estado()
-#        self.create_mart_view_fato_acidentes_top_agentes()
-#        self.create_mart_view_fato_acidentes_distribuicao_lesao()
-#        self.create_mart_view_dim_time()
-#        self.create_mart_view_dim_setor()
-#        self.create_mart_view_dim_lesao()
-#        self.create_mart_view_dim_agente()
-#        self.create_mart_view_dim_estado()
+        self.create_mart_view_fato_acidentes_mes_setor()
+        self.create_mart_view_fato_acidentes_mes_estado()
+        self.create_mart_view_fato_acidentes_top_agentes()
+        self.create_mart_view_fato_acidentes_distribuicao_lesao()
+        self.create_mart_view_dim_time()
+        self.create_mart_view_dim_setor()
+        self.create_mart_view_dim_lesao()
+        self.create_mart_view_dim_agente()
+        self.create_mart_view_dim_estado()
         self.create_mart_view_fato_acidentes_metricas()
         logger.info("Todas as views de mart foram criadas com sucesso!")
