@@ -83,112 +83,112 @@ class MartSetup:
         except Exception as e:
             logger.error(f"Erro ao fechar conexão: {e}")
     
-#    def create_mart_view_fato_acidentes_mes_setor(self):
-#        """Cria a view de mart para acidentes por mes e setor"""
-#        try:
-#            cursor = self.get_connection()
-#            # SQL para criar a view de mart
-#            create_table_sql = """
-#            CREATE VIEW schema_mart.v_fato_acidentes_mes_setor AS(
-#            SELECT
-#                EXTRACT(MONTH FROM data_acidente) AS mes,
-#                cnae_empregador_codigo AS setor_id,
-#                COUNT(*) AS total_acidentes,
-#                SUM(CASE WHEN indica_obito_acidente = 'Sim' THEN 1 ELSE 0 END) AS total_fatais
-#            FROM schema_core.acidente_trabalho
-#            GROUP BY mes, setor_id
-#            );
-#            """
-#            
-#            cursor.execute(create_table_sql)
-#            
-#            logger.info("View schema_mart.v_fato_acidentes_mes_setor criada com sucesso!")
-#                
-#        except Exception as e:
-#            logger.error(f"Erro ao criar tabela de mart: {e}")
-#            raise
-#        finally:
-#            self.close_connection(cursor)
-#
-#    def create_mart_view_fato_acidentes_mes_estado(self):
-#        """Cria a view de mart para acidentes por mes e estado"""
-#        try:
-#            cursor = self.get_connection()
-#            # SQL para criar a view de mart
-#            create_table_sql = """
-#            CREATE VIEW schema_mart.v_fato_acidentes_mes_estado AS(
-#            SELECT
-#                EXTRACT(MONTH FROM data_acidente) AS mes,
-#                estado_acidente AS uf,
-#                COUNT(*) AS total_acidentes,
-#                SUM(CASE WHEN indica_obito_acidente = 'Sim' THEN 1 ELSE 0 END) AS total_fatais
-#            FROM schema_core.acidente_trabalho
-#            GROUP BY mes, uf
-#            );
-#            """
-#            
-#            cursor.execute(create_table_sql)
-#            
-#            logger.info("View schema_mart.v_fato_acidentes_mes_estado criada com sucesso!")
-#                
-#        except Exception as e:
-#            logger.error(f"Erro ao criar tabela de mart: {e}")
-#            raise
-#        finally:
-#            self.close_connection(cursor)
-#
-#    def create_mart_view_fato_acidentes_top_agentes(self):
-#        """Cria a view de mart para acidentes top agentes causadores"""
-#        try:
-#            cursor = self.get_connection()
-#            # SQL para criar a view de mart
-#            create_table_sql = """
-#            CREATE VIEW schema_mart.v_fato_acidentes_top_agentes AS(
-#            SELECT
-#                agente_causador_acidente AS agente_descricao,
-#                EXTRACT(MONTH FROM data_acidente) AS mes,
-#                COUNT(*) AS total_acidentes
-#            FROM schema_core.acidente_trabalho
-#            GROUP BY agente_descricao, mes
-#            ORDER BY total_acidentes DESC
-#            );
-#            """
-#            
-#            cursor.execute(create_table_sql)
-#            
-#            logger.info("View schema_mart.v_fato_acidentes_top_agentes criada com sucesso!")
-#                
-#        except Exception as e:
-#            logger.error(f"Erro ao criar tabela de mart: {e}")
-#            raise
-#        finally:
-#            self.close_connection(cursor)
-#    
-#    def create_mart_view_fato_acidentes_distribuicao_lesao(self):
-#        """Cria a view de mart para acidentes distribuição de lesão"""
-#        try:
-#            cursor = self.get_connection()
-#            # SQL para criar a view de mart
-#            create_table_sql = """
-#            CREATE VIEW schema_mart.v_fato_acidentes_distribuicao_lesao AS(
-#            SELECT
-#                natureza_lesao AS lesao_descricao,
-#                EXTRACT(MONTH FROM data_acidente) AS mes,
-#                COUNT(*) AS total_acidentes
-#            FROM schema_core.acidente_trabalho
-#            GROUP BY lesao_descricao, mes
-#            );
-#            """
-#            
-#            cursor.execute(create_table_sql)
-#            
-#            logger.info("View schema_mart.v_fato_acidentes_distribuicao_lesao criada com sucesso!")
-#                
-#        except Exception as e:
-#            logger.error(f"Erro ao criar tabela de mart: {e}")
-#            raise
-#        finally:
-#            self.close_connection(cursor)
+    def create_mart_view_fato_acidentes_mes_setor(self):
+        """Cria a view de mart para acidentes por mes e setor"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_fato_acidentes_mes_setor AS(
+            SELECT
+                EXTRACT(MONTH FROM data_acidente) AS mes,
+                cnae_empregador_codigo AS setor_id,
+                COUNT(*) AS total_acidentes,
+                SUM(CASE WHEN indica_obito_acidente = 'Sim' THEN 1 ELSE 0 END) AS total_fatais
+            FROM schema_core.acidente_trabalho
+            GROUP BY mes, setor_id
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_fato_acidentes_mes_setor criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
+    def create_mart_view_fato_acidentes_mes_estado(self):
+        """Cria a view de mart para acidentes por mes e estado"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_fato_acidentes_mes_estado AS(
+            SELECT
+                EXTRACT(MONTH FROM data_acidente) AS mes,
+                estado_acidente AS uf,
+                COUNT(*) AS total_acidentes,
+                SUM(CASE WHEN indica_obito_acidente = 'Sim' THEN 1 ELSE 0 END) AS total_fatais
+            FROM schema_core.acidente_trabalho
+            GROUP BY mes, uf
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_fato_acidentes_mes_estado criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
+    def create_mart_view_fato_acidentes_top_agentes(self):
+        """Cria a view de mart para acidentes top agentes causadores"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_fato_acidentes_top_agentes AS(
+            SELECT
+                agente_causador_acidente AS agente_descricao,
+                EXTRACT(MONTH FROM data_acidente) AS mes,
+                COUNT(*) AS total_acidentes
+            FROM schema_core.acidente_trabalho
+            GROUP BY agente_descricao, mes
+            ORDER BY total_acidentes DESC
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_fato_acidentes_top_agentes criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+    
+    def create_mart_view_fato_acidentes_distribuicao_lesao(self):
+        """Cria a view de mart para acidentes distribuição de lesão"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_fato_acidentes_distribuicao_lesao AS(
+            SELECT
+                natureza_lesao AS lesao_descricao,
+                EXTRACT(MONTH FROM data_acidente) AS mes,
+                COUNT(*) AS total_acidentes
+            FROM schema_core.acidente_trabalho
+            GROUP BY lesao_descricao, mes
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_fato_acidentes_distribuicao_lesao criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
     
     def create_mart_view_fato_acidentes_metricas(self):
         """Cria a view de mart para acidentes metricas"""
@@ -199,7 +199,7 @@ class MartSetup:
             CREATE OR REPLACE VIEW schema_mart.v_fato_acidentes_metricas AS(
             WITH acidentes AS (
             SELECT
-                EXTRACT(MONTH FROM data_acidente) AS mes,
+                EXTRACT(MONTH FROM data_acidente AS INTEGER) AS mes,
                 indica_obito_acidente,
                 cid_10_codigo,
                 sexo,
