@@ -70,14 +70,14 @@ class StageSetup:
                     especie_beneficio VARCHAR,
                     filiacao_segurado VARCHAR,
                     indica_obito_acidente VARCHAR,
-                    municipio_empregador VARCHAR,
+                    municipio_empregador_codigo VARCHAR,
                     natureza_lesao VARCHAR,
                     origem_cadastramento_cat VARCHAR,
                     parte_corpo_atingida VARCHAR,
                     sexo VARCHAR,
                     tipo_acidente VARCHAR,
-                    uf_municipio_acidente VARCHAR,
-                    uf_municipio_empregador VARCHAR,
+                    estado_acidente VARCHAR,
+                    estado_empregador VARCHAR,
                     data_afastamento VARCHAR,
                     data_despacho_beneficio VARCHAR,
                     data_acidente_duplicada VARCHAR,
@@ -115,14 +115,14 @@ class StageSetup:
                 'Espécie do benefício': 'especie_beneficio',
                 'Filiação Segurado': 'filiacao_segurado',
                 'Indica Óbito Acidente': 'indica_obito_acidente',
-                'Munic Empr': 'municipio_empregador',
+                'Munic Empr': 'municipio_empregador_codigo',
                 'Natureza da Lesão': 'natureza_lesao',
                 'Origem de Cadastramento CAT': 'origem_cadastramento_cat',
                 'Parte Corpo Atingida': 'parte_corpo_atingida',
                 'Sexo': 'sexo',
                 'Tipo do Acidente': 'tipo_acidente',
-                'UF  Munic.  Acidente': 'uf_municipio_acidente',
-                'UF Munic. Empregador': 'uf_municipio_empregador',
+                'UF  Munic.  Acidente': 'estado_acidente',
+                'UF Munic. Empregador': 'estado_empregador',
                 'Data  Afastamento': 'data_afastamento',
                 'Data Despacho Benefício': 'data_despacho_beneficio',
                 'Data Acidente.1': 'data_acidente_duplicada',
@@ -194,7 +194,7 @@ class StageSetup:
             raise
 
     def create_stage_table_municipio(self):
-        """Cria a tabela de stage para acidentes de trabalho"""
+        """Cria a tabela de stage para municipios"""
         try:
             with psycopg2.connect(
                 host=self.host,
@@ -514,8 +514,8 @@ class StageSetup:
                 # SQL para criar a tabela CID10
                 create_table_sql = """
                 CREATE TABLE IF NOT EXISTS schema_stage.cid10 (
-                    cid10_codigo TEXT PRIMARY KEY,
-                    cid10_descricao TEXT
+                    cid10_codigo VARCHAR PRIMARY KEY,
+                    cid10_descricao VARCHAR
                 );
                 """
                 
@@ -566,12 +566,112 @@ class StageSetup:
             logger.error(f"Erro ao carregar dados CID10: {e}")
             raise
 
+    def create_stage_table_cnae(self):
+        """Cria a tabela de stage para cnae"""
+        try:
+            with psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                user=self.user,
+                password=self.password,
+                client_encoding='latin1'
+            ) as conn:
+                cursor = conn.cursor()
+                # SQL para criar a tabela de stage
+                create_table_sql = """
+                CREATE TABLE IF NOT EXISTS schema_stage.cnae (
+                    cnae_codigo INT PRIMARY KEY,
+                    cnae_descricao VARCHAR
+                );
+                """
+                
+                cursor.execute(create_table_sql)
+                
+                conn.commit()
+                logger.info("Tabela schema_stage.cnae criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de stage cnae: {e}")
+            raise
+    
+    def clean_and_normalize_data_cnae(self, df):
+        """Apenas renomeia as colunas"""
+        try:
+            # Mapear colunas para nomes padronizados
+            column_mapping = {
+                'codigo': 'cnae_codigo',
+                'descricao': 'cnae_descricao'
+            }
+            
+            # Renomear colunas
+            df = df.rename(columns=column_mapping)
+                        
+            logger.info(f"Colunas renomeadas e origem adicionada. Shape: {df.shape}")
+            return df
+            
+        except Exception as e:
+            logger.error(f"Erro ao processar dados: {e}")
+            raise
+
+    def load_csv_file_cnae(self, data_folder_path):
+        """Carrega o arquivo CSV cnae para sua tabela de stage"""
+        try:
+            # Busca o arquivo CSV
+            csv_files = glob.glob(os.path.join(data_folder_path, "cnae.csv"))
+            
+            if not csv_files:
+                logger.warning(f"Nenhum arquivo CSV encontrado em {data_folder_path}")
+                return
+            
+            logger.info(f"Encontrado {len(csv_files)} arquivo CSV para processar")
+            
+            total_records = 0
+            
+            for csv_file in csv_files:
+                try:
+                    arquivo_nome = os.path.basename(csv_file)
+                    logger.info(f"Processando arquivo: {arquivo_nome}")
+                    
+                    # Ler CSV com encoding adequado
+                    df = pd.read_csv(csv_file, sep=';', encoding='latin-1', low_memory=False)
+                    
+                    logger.info(f"Arquivo {arquivo_nome} carregado com {len(df)} registros")
+                    
+                    # Limpar e normalizar dados
+                    df_clean = self.clean_and_normalize_data_cnae(df)
+                    
+                    # Carregar dados na tabela
+                    df_clean.to_sql(
+                        name='cnae',
+                        con=self.engine,
+                        schema='schema_stage',
+                        if_exists='append',
+                        index=False,
+                        method='multi',
+                        chunksize=1000
+                    )
+                    
+                    total_records += len(df_clean)
+                    logger.info(f"Arquivo {arquivo_nome} carregado com sucesso! {len(df_clean)} registros inseridos")
+                    
+                except Exception as e:
+                    logger.error(f"Erro ao processar arquivo {csv_file}: {e}")
+                    continue
+            
+            logger.info(f"Carga concluída! Total de registros inseridos: {total_records}")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar arquivos CSV: {e}")
+            raise
+
     def create_stage_table_auxiliar(self):
         """Executa a criação das tabelas auxiliares"""
         self.create_stage_table_municipio()
         self.create_stage_table_agente_causador()
         self.create_stage_table_natureza_lesao()
         self.create_stage_table_cid10()
+        self.create_stage_table_cnae()
     
     def load_csv_files_auxiliar(self):
         """Carrega os arquivos CSV das tabelas auxiliares"""
@@ -581,3 +681,4 @@ class StageSetup:
         self.load_csv_file_agente_causador(data_folder)
         self.load_csv_file_natureza_lesao(data_folder)
         self.load_csv_file_cid10(data_folder)
+        self.load_csv_file_cnae(data_folder)

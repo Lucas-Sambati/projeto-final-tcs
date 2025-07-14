@@ -97,16 +97,18 @@ class CoreSetup:
                 cid_10_codigo VARCHAR(4),
                 cnae_empregador_codigo INT,
                 indica_obito_acidente VARCHAR,
-                municipio_empregador INT,
+                municipio_empregador_codigo INT,
                 natureza_lesao VARCHAR,
                 parte_corpo_atingida VARCHAR,
                 sexo VARCHAR,
                 tipo_acidente VARCHAR,
-                uf_municipio_acidente VARCHAR,
-                uf_municipio_empregador VARCHAR,
+                estado_acidente VARCHAR,
+                estado_empregador VARCHAR,
                 data_nascimento DATE,
                 data_carga TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (municipio_empregador) REFERENCES schema_core.municipio (municipio_ibge_codigo)
+                FOREIGN KEY (municipio_empregador_codigo) REFERENCES schema_core.municipio (municipio_ibge_codigo),
+                FOREIGN KEY (cid_10_codigo) REFERENCES schema_core.cid10 (cid10_codigo),
+                FOREIGN KEY (cnae_empregador_codigo) REFERENCES schema_core.cnae (cnae_codigo)
             );
             """
             
@@ -138,8 +140,8 @@ class CoreSetup:
             
             # Remover espaços em branco das colunas de texto
             text_columns = ['agente_causador_acidente', 'cid_10_codigo', 'indica_obito_acidente', 
-                          'municipio_empregador', 'natureza_lesao', 'parte_corpo_atingida',
-                          'sexo', 'tipo_acidente', 'uf_municipio_acidente', 'uf_municipio_empregador']
+                          'municipio_empregador_codigo', 'natureza_lesao', 'parte_corpo_atingida',
+                          'sexo', 'tipo_acidente', 'estado_acidente', 'estado_empregador']
             
             for col in text_columns:
                 if col in df_clean.columns:
@@ -165,16 +167,16 @@ class CoreSetup:
                     df_clean[col] = df_clean[col].replace('NAN', None)
                     df_clean[col] = df_clean[col].replace('NONE', None)
 
-            # Tratar coluna municipio_empregador
-            df_clean['municipio_empregador'] = df_clean['municipio_empregador'].str.split('-').str[0].str.strip()
-            df_clean['municipio_empregador'] = df_clean['municipio_empregador'].replace('DESCONHECIDO', 0)
-            df_clean['municipio_empregador'] = df_clean['municipio_empregador'].astype(int)
+            # Tratar coluna municipio_empregador_codigo
+            df_clean['municipio_empregador_codigo'] = df_clean['municipio_empregador_codigo'].str.split('-').str[0].str.strip()
+            df_clean['municipio_empregador_codigo'] = df_clean['municipio_empregador_codigo'].replace('DESCONHECIDO', 0)
+            df_clean['municipio_empregador_codigo'] = df_clean['municipio_empregador_codigo'].astype(int)
 
             # Selecionar apenas as colunas que existem na tabela core
             core_columns = ['agente_causador_acidente', 'data_acidente', 'cid_10_codigo',
-                          'cnae_empregador_codigo', 'indica_obito_acidente', 'municipio_empregador',
+                          'cnae_empregador_codigo', 'indica_obito_acidente', 'municipio_empregador_codigo',
                           'natureza_lesao', 'parte_corpo_atingida', 'sexo', 'tipo_acidente',
-                          'uf_municipio_acidente', 'uf_municipio_empregador', 'data_nascimento']
+                          'estado_acidente', 'estado_empregador', 'data_nascimento']
             
             # Filtrar apenas as colunas que existem no DataFrame
             available_columns = [col for col in core_columns if col in df_clean.columns]
@@ -258,9 +260,9 @@ class CoreSetup:
                     # Carregar lote de dados da staging
                     query = f"""
                     SELECT agente_causador_acidente, data_acidente, cid_10_codigo,
-                           cnae_empregador_codigo, indica_obito_acidente, municipio_empregador,
+                           cnae_empregador_codigo, indica_obito_acidente, municipio_empregador_codigo,
                            natureza_lesao, parte_corpo_atingida, sexo, tipo_acidente,
-                           uf_municipio_acidente, uf_municipio_empregador, data_nascimento
+                           estado_acidente, estado_empregador, data_nascimento
                     FROM schema_stage.acidente_trabalho
                     ORDER BY id
                     LIMIT {batch_size} OFFSET {offset}
@@ -743,8 +745,8 @@ class CoreSetup:
             # SQL para criar a tabela de core
             create_table_sql = """
             CREATE TABLE IF NOT EXISTS schema_core.cid10 (
-                cid10_codigo TEXT PRIMARY KEY,
-                cid10_descricao TEXT
+                cid10_codigo VARCHAR(4) PRIMARY KEY,
+                cid10_descricao VARCHAR
             );
             """
             
@@ -775,7 +777,7 @@ class CoreSetup:
             df_clean = df.copy()
             
             # Remover espaços em branco das colunas de texto
-            text_columns = ['cid10_descricao']
+            text_columns = ['cid10_codigo','cid10_descricao']
             
             for col in text_columns:
                 if col in df_clean.columns:
@@ -866,12 +868,150 @@ class CoreSetup:
         finally:
             self.close_connection(cursor)
 
+    def create_core_table_cnae(self):
+        """Cria a tabela de core para o cnae"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a tabela de core
+            create_table_sql = """
+            CREATE TABLE IF NOT EXISTS schema_core.cnae (
+                cnae_codigo INT PRIMARY KEY,
+                cnae_descricao VARCHAR
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("Tabela schema_core.cnae criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de core: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+    
+    def clean_and_normalize_data_cnae(self, df):
+        """
+        Limpa e normaliza os dados vindos da stage
+        
+        Args:
+            df (pd.DataFrame): DataFrame com os dados da stage
+            
+        Returns:
+            pd.DataFrame: DataFrame limpo e normalizado
+        """
+        try:
+            logger.info("Iniciando limpeza e normalização dos dados")
+            
+            # Fazer uma cópia para não modificar o original
+            df_clean = df.copy()
+            
+            # Remover espaços em branco das colunas de texto
+            text_columns = ['cnae_descricao']
+            
+            for col in text_columns:
+                if col in df_clean.columns:
+                    df_clean[col] = df_clean[col].astype(str).str.strip().str.upper()
+                    # Substituir strings vazias por None
+                    df_clean[col] = df_clean[col].replace('', 'DESCONHECIDO')
+                    df_clean[col] = df_clean[col].replace('NAN', 'DESCONHECIDO')
+                    df_clean[col] = df_clean[col].replace('NONE', 'DESCONHECIDO')
+                    df_clean[col] = df_clean[col].replace('{Ñ CLASS}', 'DESCONHECIDO')
+
+            # Selecionar apenas as colunas que existem na tabela core
+            core_columns = ['cnae_codigo','cnae_descricao']
+            
+            # Filtrar apenas as colunas que existem no DataFrame
+            available_columns = [col for col in core_columns if col in df_clean.columns]
+            df_clean = df_clean[available_columns]
+            
+            logger.info(f"Dados limpos e normalizados. Shape final: {df_clean.shape}")
+            return df_clean
+            
+        except Exception as e:
+            logger.error(f"Erro ao limpar e normalizar dados: {e}")
+            raise
+
+    def load_data_from_stage_to_core_cnae(self, batch_size=1000):
+        """
+        Carrega dados da tabela de stage, trata e insere na tabela core
+        
+        Args:
+            batch_size (int): Tamanho do lote para processamento
+        """
+        try:
+            logger.info("Iniciando carregamento de dados da stage para core")
+            
+            # Primeiro, verificar se há dados na stage
+            cursor = self.get_connection()
+            cursor.execute("SELECT COUNT(*) as count FROM schema_stage.cnae")
+            result = cursor.fetchone()
+            total_records = result['count']
+            
+            if total_records == 0:
+                logger.warning("Nenhum dado encontrado na tabela stage cnae")
+                return
+            
+            logger.info(f"Total de registros na tabela stage cnae): {total_records}")
+            
+            self.close_connection(cursor)
+            
+            # Processar dados em lotes
+            offset = 0
+            total_inserted = 0
+            
+            while offset < total_records:
+                try:
+                    # Carregar lote de dados da staging
+                    query = f"""
+                    SELECT cnae_codigo, cnae_descricao
+                    FROM schema_stage.cnae
+                    ORDER BY cnae_codigo
+                    LIMIT {batch_size} OFFSET {offset}
+                    """
+                    
+                    df_batch = pd.read_sql(query, self.engine)
+                    
+                    if df_batch.empty:
+                        break
+                    
+                    # Limpar e normalizar dados
+                    df_clean = self.clean_and_normalize_data_cnae(df_batch)
+                    
+                    # Inserir na tabela core
+                    df_clean.to_sql(
+                        name='cnae',
+                        con=self.engine,
+                        schema='schema_core',
+                        if_exists='append',
+                        index=False,
+                        method='multi'
+                    )
+                    
+                    total_inserted += len(df_clean)
+                    offset += batch_size
+                    
+                    logger.info(f"Processado lote: {offset}/{total_records} registros. Inseridos: {total_inserted}")
+                    
+                except Exception as e:
+                    logger.error(f"Erro ao processar lote offset {offset}: {e}")
+                    raise
+            
+            logger.info(f"Carregamento concluído! Total de registros inseridos na core cnae: {total_inserted}")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar dados da stage para core: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
     def create_core_table_auxiliar(self):
         """Executa a criação das tabelas auxiliares no core"""
         self.create_core_table_municipio()
         self.create_core_table_agente_causador()
         self.create_core_table_natureza_lesao()
         self.create_core_table_cid10()
+        self.create_core_table_cnae()
     
     def load_data_from_stage_to_core_auxiliar(self):
         """Carrega os dados das tabelas auxiliares do stage para o core"""
@@ -879,3 +1019,4 @@ class CoreSetup:
         self.load_data_from_stage_to_core_agente_causador()
         self.load_data_from_stage_to_core_natureza_lesao()
         self.load_data_from_stage_to_core_cid10()
+        self.load_data_from_stage_to_core_cnae()

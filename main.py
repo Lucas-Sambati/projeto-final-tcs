@@ -39,6 +39,9 @@ def main():
         data_folder = os.path.join(os.path.dirname(__file__), 'data/acidente')
         
         logger.info("=== INICIANDO SETUP DO DATA WAREHOUSE ===")
+
+        # 0. Deletar banco de dados para atualizações
+        dw_setup.delete_database()
         
         # 1. Criar banco de dados
         dw_setup.create_database_if_not_exists()

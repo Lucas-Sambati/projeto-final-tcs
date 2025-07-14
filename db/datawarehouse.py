@@ -99,3 +99,37 @@ class DataWarehouseSetup:
         except Exception as e:
             logger.error(f"Erro ao criar schemas: {e}")
             raise
+
+    def delete_database(self):
+        """Deleta o banco de dados"""
+        try:
+            # Conecta ao banco postgres padrão para deletar o banco
+            conn = psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                database='postgres',
+                user=self.user,
+                password=self.password,
+                client_encoding='latin1'
+            )
+            conn.autocommit = True
+            cursor = conn.cursor()
+            
+            # Verifica se o banco existe
+            cursor.execute(f"SELECT 1 FROM pg_database WHERE datname = '{self.database}'")
+            exists = cursor.fetchone()
+            
+            if not exists:
+                logger.info(f"Banco de dados {self.database} não existe")
+            else:
+                logger.info(f"Banco de dados {self.database} existe")
+                cursor.execute(f'DROP DATABASE "{self.database}"')
+                logger.info(f"Banco de dados {self.database} deletado com sucesso!")
+
+                
+            cursor.close()
+            conn.close()
+            
+        except Exception as e:
+            logger.error(f"Erro ao deletar banco de dados: {e}")
+            raise

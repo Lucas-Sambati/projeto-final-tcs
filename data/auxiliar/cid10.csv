@@ -12449,4 +12449,161 @@ U818,Agente resistente a outros antibioticos relacionado a vancomicina
 U88,Agente resistente a multiplos antibioticos
 U898,Agente resistente a outro antibiotico especificado unico
 U899,Agente resistente a antibiotico nao especificado
-U99,CID 10a Revisao nao disponivel
+A099,Diarreia e gastroenterite de origem infecciosa presumivel
+A466,Erisipela
+A644,Doencas sexualmente transmitidas nao especificadas
+A777,Febre maculosa [rickettsioses transmitidas por carrapatos]
+A900,Dengue [dengue classico]
+A933,Outras febres por virus transmitidas por artropodes nao classificadas em outra parte
+B099,Infeccao viral nao especificada caracterizada por lesoes da pele e membranas mucosas
+B244,Doenca pelo virus da imunodeficiencia humana [HIV] nao especificada
+B422,Esporotricose
+B511,Malaria por Plasmodium vivax
+B866,Escabiose [sarna]
+B877,Miiase
+C200,Neoplasia maligna do reto
+C611,Neoplasia maligna da prostata
+C800,Neoplasia maligna sem especificacao de localizacao
+D655,Coagulacao intravascular disseminada [sindrome de desfibrinacao]
+F433,"Reacoes ao ""stress"" grave e transtornos de adaptacao"
+F455,Transtornos somatoformes
+F888,Outros transtornos do desenvolvimento psicologico
+G100,Doenca de Huntington
+G322,Outros transtornos degenerativos do sistema nervoso em doencas classificadas em outra parte
+G455,Acidentes vasculares cerebrais isquemicos transitorios e sindromes correlatas
+G566,Mononeuropatias dos membros superiores
+G577,Mononeuropatias dos membros inferiores
+H155,Transtornos da esclerotica
+H166,Ceratite
+H344,Oclusoes vasculares da retina
+H577,Outros transtornos do olho e anexos
+H655,Otite media nao-supurativa
+H822,Sindromes vertiginosas em doencas classificadas em outra parte
+I022,Coreia reumatica
+I100,Hipertensao essencial (primaria)
+I466,Parada cardiaca
+I488,Flutter e fibrilacao atrial
+I644,Acidente vascular cerebral nao especificado como hemorragico ou isquemico
+J000,Nasofaringite aguda [resfriado comum]
+J022,Faringite aguda
+J033,Amigdalite aguda
+J344,Outros transtornos do nariz e dos seios paranasais
+J455,Asma
+J666,Doencas das vias aereas devida a poeiras organicas especificas
+J699,Pneumonite devida a solidos e liquidos
+J800,Sindrome do desconforto respiratorio do adulto
+J933,Pneumotorax
+J966,Insuficiencia respiratoria nao classificada de outra parte
+K077,Anomalias dentofaciais (inclusive a maloclusao)
+K200,Esofagite
+K300,Dispepsia
+K422,Hernia umbilical
+K855,Pancreatite aguda
+L277,Dermatite devida a substancias de uso interno
+L455,Afeccoes papulo-descamativas em doencas classificadas em outra parte
+L855,Outras formas de espessamento epidermico
+L977,Ulcera dos membros inferiores nao classificada em outra parte
+L999,Outras afeccoes da pele e do tecido subcutaneo em doencas classificadas em outra parte
+M055,Artrite reumatoide soro-positiva
+M077,Artropatias psoriasicas e enteropaticas
+M133,Outras artrites
+M155,Poliartrose
+M177,Gonartrose [artrose do joelho]
+M455,Espondilite ancilosante
+M477,Espondilose
+M499,Espondilopatias em doencas classificadas em outra parte
+M655,Sinovite e tenossinovite
+M666,Ruptura espontanea de sinovia e de tendao
+M733,Transtornos dos tecidos moles em doencas classificadas em outra parte
+M777,Outras entesopatias
+N966,Abortamento habitual
+Q744,Outras malformacoes congenitas dos membros
+Q855,Facomatoses nao classificadas em outra parte
+R022,Gangrena nao classificada em outra parte
+R055,Tosse
+R077,Dor de garganta e no peito
+R111,Nausea e vomitos
+R155,Incontinencia fecal
+R211,Eritema e outras erupcoes cutaneas nao especificadas
+R255,Movimentos involuntarios anormais
+R422,Tontura e instabilidade
+R511,Cefaleia
+R533,Mal estar fadiga
+R555,Sincope e colapso
+R566,Convulsoes nao classificadas em outra parte
+R577,Choque nao classificado em outra parte
+R699,Causas desconhecidas e nao especificadas de morbidade
+R966,Outras mortes subitas de causa desconhecida
+R988,Morte sem assistencia
+R999,Outras causas mal definidas e as nao especificadas de mortalidade
+S077,Lesoes por esmagamento da cabeca
+S155,Traumatismo dos vasos sanguineos ao nivel do pescoco
+S166,Traumatismo de tendoes e de musculos do pescoco
+S188,Amputacao traumatica ao nivel do pescoco
+S288,Lesao por esmagamento do torax e amputacao traumatica de parte do torax
+S455,Traumatismo dos vasos sanguineos ao nivel do ombro e do braco
+S466,Traumatismo de tendao e musculo ao nivel do ombro e do braco
+S477,Lesao por esmagamento do ombro e do braco
+S488,Amputacao traumatica do ombro e do braco
+S511,Ferimento do antebraco
+S566,Traumatismo do musculo e tendao ao nivel do antebraco
+S577,Lesao por esmagamento do antebraco
+S677,Lesao por esmagamento do punho e da mao
+S733,Luxacao entorse e distensao da articulacao e dos ligamentos do quadril
+S744,Traumatismo de nervos ao nivel do quadril e da coxa
+S766,Traumatismo de musculo e de tendao ao nivel do quadril e da coxa
+S777,Lesao por esmagamento do quadril e da coxa
+S788,Amputacao traumatica do quadril e da coxa
+S811,Ferimento da perna
+S844,Traumatismo de nervos perifericos da perna
+S866,Traumatismos de musculo e de tendao ao nivel da perna
+S877,Traumatismo por esmagamento da perna
+S888,Amputacao traumatica da perna
+S944,Traumatismo dos nervos ao nivel do tornozelo e do pe
+S955,Traumatismo de vasos sanguineos ao nivel do tornozelo e do pe
+S966,Traumatismos do musculo e tendao ao nivel do tornozelo e do pe
+S977,Lesao por esmagamento do tornozelo e do pe
+T066,Outros traumatismos envolvendo regioes multiplas do corpo nao classificados em outra parte
+T077,Traumatismos multiplos nao especificados
+T088,Fratura da coluna nivel nao especificado
+T100,Fratura do membro superior nivel nao especificado
+T122,Fratura do membro inferior nivel nao especificado
+T155,Corpo estranho na parte externa do olho
+T166,Corpo estranho no ouvido
+T299,Queimaduras e corrosoes de multiplas regioes do corpo
+T555,Efeito toxico de saboes e detergentes
+T588,Efeito toxico do monoxido de carbono
+T711,Asfixia
+T744,Sindromes de maus tratos
+T755,Efeitos de outras causas externas
+T877,Complicacoes proprias de reimplante e amputacao
+T944,Sequelas de traumatismos envolvendo multiplas regioes do corpo e as nao especificadas
+V022,Pedestre traumatizado em colisao com um veiculo a motor de duas ou tres rodas
+V033,"Pedestre traumatizado em colisao com um automovel [carro] ""pick up"" ou caminhonete"
+V044,Pedestre traumatizado em colisao com um veiculo de transporte pesado ou com um onibus
+V066,Pedestre traumatizado em colisao com outro veiculo nao-motorizado
+V188,Ciclista traumatizado em um acidente de transporte sem colisao
+V266,Motociclista traumatizado em colisao com outro veiculo nao-motorizado
+V277,Motociclista traumatizado em colisao com um objeto fixo ou parado
+V288,Motociclista traumatizado em um acidente de transporte sem colisao
+V488,Ocupante de um automovel [carro] traumatizado em um acidente de transporte sem colisao
+V688,Ocupante de um veiculo de transporte pesado traumatizado em um acidente de transporte sem colisao
+V788,Ocupante de um onibus traumatizado em um acidente de transporte sem colisao
+V988,Outros acidentes de transporte especificados
+V999,Acidente de transporte nao especificado
+Y644,Medicamentos ou substancias biologicas contaminados
+Y666,Nao administracao de cuidado medico e cirurgico
+Y699,Acidente nao especificado durante a prestacao de cuidado medico e cirurgico
+Y877,Sequelas de uma lesao autoprovocada intencionalmente de agressao ou de um fato cuja intencao e indeterminada
+Y955,Circunstancia relativa as condicoes nosocomiais (hospitalares)
+Y966,Circunstancia relativa as condicoes de trabalho
+Y988,Circunstancias relativas a condicoes do modo de vida
+Z255,Necessidade de imunizacao contra outras doencas virais unicas
+Z344,Supervisao de gravidez normal
+Z399,Assistencia e exame pos-natal
+Z477,Outros cuidados de seguimento ortopedico
+Z533,Pessoas em contato com servicos de saude para procedimentos especificos nao realizados
+Z766,Pessoas em contato com os servicos de saude em outras circunstancias
+U071,COVID19 virus identificado
+R299,Outros sintomas e sinais relativos aos sistemas nervoso e osteomuscular
+S266, Fodase
