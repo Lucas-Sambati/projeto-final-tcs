@@ -1,6 +1,7 @@
 from db.datawarehouse import DataWarehouseSetup
 from db.stage import StageSetup
 from db.core import CoreSetup
+from db.mart import MartSetup
 from db.stage import logger
 from dotenv import load_dotenv
 import os
@@ -34,6 +35,14 @@ def main():
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD')
         )    
+
+        mart_setup = MartSetup(
+            host=os.getenv('DB_HOST'),
+            port=int(os.getenv('DB_PORT')), 
+            database=os.getenv('DB_NAME'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD')
+        )   
 
         # Caminho para a pasta de dados
         data_folder = os.path.join(os.path.dirname(__file__), 'data/acidente')
@@ -82,6 +91,13 @@ def main():
         core_setup.load_data_from_stage_to_core_acidente()
         
         logger.info("=== SETUP DO DO CORE CONCLUÍDO ===")
+
+        logger.info("=== INICIANDO SETUP DO MART ===") 
+
+        # 11. Criar views de mart
+        mart_setup.create_mart_views()
+
+        logger.info("=== SETUP DO DO MART CONCLUÍDO ===")
         
     except Exception as e:
         logger.error(f"Erro durante o setup: {e}")
