@@ -92,7 +92,7 @@ class MartSetup:
             CREATE OR REPLACE VIEW schema_mart.v_fato_acidentes_mes_metricas AS(
             WITH acidentes AS (
                 SELECT
-                    EXTRACT(MONTH FROM data_acidente)::INT AS mes,
+                    mes,
                     indica_obito_acidente,
                     cid_10_codigo,
                     sexo,
@@ -180,7 +180,7 @@ class MartSetup:
             # SQL para criar a view de mart
             create_table_sql = """
             CREATE OR REPLACE VIEW schema_mart.v_fato_acidentes_mes_estados AS(
-                SELECT estado_empregador as estado, sexo, COUNT(*) as total_acidentes, EXTRACT(MONTH FROM data_acidente)::INT AS mes  
+                SELECT estado_empregador as estado, sexo, COUNT(*) as total_acidentes, mes  
             FROM schema_core.acidente_trabalho
             GROUP BY estado_empregador, mes, sexo
             ORDER BY total_acidentes DESC
@@ -205,7 +205,7 @@ class MartSetup:
             create_table_sql = """
             CREATE VIEW schema_mart.v_fato_acidentes_mes_setor AS (
                 SELECT 
-                    EXTRACT(MONTH FROM data_acidente)::INT AS mes, 
+                    mes, 
                     estado_empregador, 
                     sexo, 
                     cnae_empregador_codigo AS setor_id, 
@@ -235,7 +235,7 @@ class MartSetup:
             create_table_sql = """
             CREATE VIEW schema_mart.v_dim_tempo AS(
             SELECT DISTINCT
-                EXTRACT(MONTH FROM data_acidente)::INT AS mes
+                mes
             FROM schema_core.acidente_trabalho
             WHERE data_acidente IS NOT NULL
             );
@@ -325,11 +325,11 @@ class MartSetup:
 
     def create_mart_views(self):
         """Executa a criação das views no mart"""
-#        self.create_mart_view_fato_acidentes_mes_metricas()
-#        self.create_mart_view_fato_acidentes_mes_estado()
+        self.create_mart_view_fato_acidentes_mes_metricas()
+        self.create_mart_view_fato_acidentes_mes_estado()
         self.create_mart_view_fato_acidentes_mes_setor()
-#        self.create_mart_view_dim_tempo()
-#        self.create_mart_view_dim_estado()
-#        self.create_mart_view_dim_sexo()
-#        self.create_mart_view_dim_setor()
+        self.create_mart_view_dim_tempo()
+        self.create_mart_view_dim_estado()
+        self.create_mart_view_dim_sexo()
+        self.create_mart_view_dim_setor()
         logger.info("Todas as views de mart foram criadas com sucesso!")

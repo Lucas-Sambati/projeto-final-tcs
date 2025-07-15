@@ -94,6 +94,7 @@ class CoreSetup:
                 id SERIAL PRIMARY KEY,
                 agente_causador_acidente VARCHAR,
                 data_acidente DATE,
+                mes VARCHAR,
                 cid_10_codigo VARCHAR(4),
                 cnae_empregador_codigo INT,
                 indica_obito_acidente VARCHAR,
@@ -214,6 +215,12 @@ class CoreSetup:
             df_clean['natureza_lesao'] = df_clean['natureza_lesao'].apply(
                 lambda x: find_best_match(x, agente_descricao_list)
             )
+
+            # Criar coluna de mes
+            meses_ptbr = ['JANEIRO', 'FEVEREIRO', 'MARCO', 'ABRIL', 'MAIO', 'JUNHO',
+                        'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO']
+
+            df_clean['mes'] = df_clean['data_acidente'].dt.month.apply(lambda x: meses_ptbr[x - 1])
             
             logger.info(f"Dados limpos e normalizados. Shape final: {df_clean.shape}")
             return df_clean
