@@ -83,7 +83,7 @@ class MartSetup:
         except Exception as e:
             logger.error(f"Erro ao fechar conexão: {e}")
     
-    def create_mart_view_fato_acidentes_metricas(self):
+    def create_mart_view_fato_acidentes_mes_metricas(self):
         """Cria a view de mart para acidentes metricas"""
         try:
             cursor = self.get_connection()
@@ -173,7 +173,7 @@ class MartSetup:
         finally:
             self.close_connection(cursor)
     
-    def create_mart_view_fato_acidentes_estado(self):
+    def create_mart_view_fato_acidentes_mes_estado(self):
         """Cria a view de mart para acidentes estado"""
         try:
             cursor = self.get_connection()
@@ -197,16 +197,23 @@ class MartSetup:
         finally:
             self.close_connection(cursor)
     
-    def create_mart_view_fato_acidentes_setor(self):
+    def create_mart_view_fato_acidentes_mes_setor(self):
         """Cria a view de mart para acidentes setor"""
         try:
             cursor = self.get_connection()
             # SQL para criar a view de mart
             create_table_sql = """
-            CREATE VIEW schema_mart.v_fato_acidentes_setor AS (
-                SELECT cnae_empregador_codigo AS setor_id, natureza_lesao, tipo_acidente
+            CREATE VIEW schema_mart.v_fato_acidentes_mes_setor AS (
+                SELECT 
+                    EXTRACT(MONTH FROM data_acidente)::INT AS mes, 
+                    estado_empregador, 
+                    sexo, 
+                    cnae_empregador_codigo AS setor_id, 
+                    natureza_lesao, 
+                    tipo_acidente, 
+                    COUNT(*) as total_acidentes
             FROM schema_core.acidente_trabalho
-            GROUP BY cnae_empregador_codigo, natureza_lesao, tipo_acidente
+            GROUP BY mes, estado_empregador, sexo, setor_id, natureza_lesao, tipo_acidente
             );
             """
             
@@ -318,11 +325,11 @@ class MartSetup:
 
     def create_mart_views(self):
         """Executa a criação das views no mart"""
-        self.create_mart_view_fato_acidentes_metricas()
-        self.create_mart_view_fato_acidentes_estado()
-        self.create_mart_view_fato_acidentes_setor()
-        self.create_mart_view_dim_tempo()
-        self.create_mart_view_dim_estado()
-        self.create_mart_view_dim_sexo()
-        self.create_mart_view_dim_setor()
+#        self.create_mart_view_fato_acidentes_mes_metricas()
+#        self.create_mart_view_fato_acidentes_mes_estado()
+        self.create_mart_view_fato_acidentes_mes_setor()
+#        self.create_mart_view_dim_tempo()
+#        self.create_mart_view_dim_estado()
+#        self.create_mart_view_dim_sexo()
+#        self.create_mart_view_dim_setor()
         logger.info("Todas as views de mart foram criadas com sucesso!")
