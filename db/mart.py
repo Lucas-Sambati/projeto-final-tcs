@@ -273,6 +273,7 @@ class MartSetup:
                     natureza_lesao,
                     agente_causador_acidente,
                     DATE_PART('year', AGE(data_acidente, data_nascimento)) AS idade_pessoa,
+                    COUNT(*) AS total_acidentes
                     ROUND(
                         SUM(CASE WHEN tipo_acidente = 'TÍPICO' THEN 1 ELSE 0 END)::NUMERIC
                         /
@@ -292,7 +293,7 @@ class MartSetup:
                         4
                     ) AS porcentagem_doenca
             FROM schema_core.acidente_trabalho
-            GROUP BY mes, estado_empregador, sexo, natureza_lesao, agente_causador_acidente, idade_pessoa
+            GROUP BY mes, estado_empregador, sexo, natureza_lesao, agente_causador_acidente, idade_pessoa, total_acidentes
             );
             """
             
@@ -455,15 +456,15 @@ class MartSetup:
 
     def create_mart_views(self):
         """Executa a criação das views no mart"""
-#        self.create_mart_view_fato_acidentes_mes_metricas()
-#        self.create_mart_view_fato_acidentes_mes_estado()
-#        self.create_mart_view_fato_acidentes_mes_setor()
-#        self.create_mart_view_dim_tempo()
-#        self.create_mart_view_dim_estado()
-#        self.create_mart_view_dim_sexo()
-#        self.create_mart_view_dim_setor()
-#        self.create_mart_view_fato_acidentes_mes_localidade()
+        self.create_mart_view_fato_acidentes_mes_metricas()
+        self.create_mart_view_fato_acidentes_mes_estado()
+        self.create_mart_view_fato_acidentes_mes_setor()
+        self.create_mart_view_dim_tempo()
+        self.create_mart_view_dim_estado()
+        self.create_mart_view_dim_sexo()
+        self.create_mart_view_dim_setor()
+        self.create_mart_view_fato_acidentes_mes_localidade()
         self.create_mart_view_dim_municipio()
         self.create_mart_view_fato_acidentes_mes_lesao()
-        self.create_mart_view_dim_lesao
+        self.create_mart_view_dim_lesao()
         logger.info("Todas as views de mart foram criadas com sucesso!")
