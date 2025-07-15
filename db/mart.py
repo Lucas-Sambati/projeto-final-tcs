@@ -273,7 +273,7 @@ class MartSetup:
                     natureza_lesao,
                     agente_causador_acidente,
                     DATE_PART('year', AGE(data_acidente, data_nascimento)) AS idade_pessoa,
-                    COUNT(*) AS total_acidentes
+                    COUNT(*) AS total_acidentes,
                     ROUND(
                         SUM(CASE WHEN tipo_acidente = 'TÍPICO' THEN 1 ELSE 0 END)::NUMERIC
                         /
