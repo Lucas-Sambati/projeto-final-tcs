@@ -146,11 +146,12 @@ class CoreSetup:
             for col in text_columns:
                 if col in df_clean.columns:
                     df_clean[col] = df_clean[col].astype(str).str.strip().str.upper()
-                    # Substituir strings vazias por None
-                    df_clean[col] = df_clean[col].replace('', 'DESCONHECIDO')
-                    df_clean[col] = df_clean[col].replace('NAN', 'DESCONHECIDO')
-                    df_clean[col] = df_clean[col].replace('NONE', 'DESCONHECIDO')
-                    df_clean[col] = df_clean[col].replace('{Ñ CLASS}', 'DESCONHECIDO')
+                    # Lista de valores inválidos
+                    valores_invalidos = ['', 'NAN', 'NONE', '{Ñ CLASS}', 'ZERADO', 'DESCONHECIDO']
+
+                    # Mantém só linhas que NÃO têm valor inválido nessas colunas
+                    mascara_invalidos = df_clean[text_columns].isin(valores_invalidos).any(axis=1)
+                    df_clean = df_clean[~mascara_invalidos]
             
             # Tratar datas
             date_columns = ['data_acidente', 'data_nascimento']
@@ -158,19 +159,13 @@ class CoreSetup:
                 if col in df_clean.columns:
                     df_clean[col] = pd.to_datetime(df_clean[col], errors='coerce', dayfirst=True)
             
-            # Tratar campos numéricos com verificação de limites
-            numeric_columns = ['cnae_empregador_codigo']
-            for col in numeric_columns:
-                if col in df_clean.columns:
-                    # Substituir numéricos vazios por None
-                    df_clean[col] = df_clean[col].replace('', None)
-                    df_clean[col] = df_clean[col].replace('NAN', None)
-                    df_clean[col] = df_clean[col].replace('NONE', None)
+            # Tratar coluna cnae_empregador_codigo
+            df_clean['cnae_empregador_codigo'] = df_clean['cnae_empregador_codigo'] // 100
 
             # Tratar coluna municipio_empregador_codigo
             df_clean['municipio_empregador_codigo'] = df_clean['municipio_empregador_codigo'].str.split('-').str[0].str.strip()
-            df_clean['municipio_empregador_codigo'] = df_clean['municipio_empregador_codigo'].replace('DESCONHECIDO', 0)
             df_clean['municipio_empregador_codigo'] = df_clean['municipio_empregador_codigo'].astype(int)
+            df_clean = df_clean[df_clean['municipio_empregador_codigo'] != 0]
 
             # Selecionar apenas as colunas que existem na tabela core
             core_columns = ['agente_causador_acidente', 'data_acidente', 'cid_10_codigo',
@@ -400,20 +395,6 @@ class CoreSetup:
             logger.info(f"Total de registros na tabela stage municipio: {total_records}")
             
             self.close_connection(cursor)
-
-            # Adiciona código de desconhecido
-            df_0 = pd.DataFrame({
-                'municipio_ibge_codigo': [0],
-                'municipio_ibge_descricao': ['DESCONHECIDO']
-            })
-            df_0.to_sql(
-                name='municipio',
-                con=self.engine,
-                schema='schema_core',
-                if_exists='append',
-                index=False,
-                method='multi'
-            )
             
             # Processar dados em lotes
             offset = 0
