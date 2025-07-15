@@ -221,7 +221,35 @@ class CoreSetup:
                         'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO']
 
             df_clean['mes'] = df_clean['data_acidente'].dt.month.apply(lambda x: meses_ptbr[x - 1])
-            
+
+            # Limpando cidades duplicadas manualmente
+            linhas_para_excluir = [
+                ('MINAS GERAIS', 313360),
+                ('PARANÁ', 410300),
+                ('MINAS GERAIS', 310800),
+                ('PARANÁ', 410345),
+                ('SÃO PAULO', 350250),  # APARECIDA
+                ('RORAIMA', 140010),    # BOA VISTA
+                ('RONDÔNIA', 110045),   # BURITIS
+                ('PARANÁ', 410445),     # CANTAGALO
+                ('PARANÁ', 410450),     # CAPANEMA
+                ('SÃO PAULO', 351740),  # GUAÍRA
+                ('SÃO PAULO', 351790),  # GUARACI
+                ('RONDÔNIA', 110143),   # NOVA UNIÃO
+                ('TOCANTINS', 172100),  # PALMAS
+                ('SÃO PAULO', 353960),  # PLANALTO
+                ('PARÁ', 150775),       # SAPUCAIA
+                ('SÃO PAULO', 355440),  # TERRA ROXA
+            ]
+
+            # Converter para um DataFrame auxiliar
+            exclusoes_df = pd.DataFrame(linhas_para_excluir, columns=['estado_empregador', 'municipio_empregador_codigo'])
+
+            # Fazer o merge anti para remover do df_clean
+            df_clean = df_clean.merge(exclusoes_df, on=['estado_empregador', 'municipio_empregador_codigo'], how='left', indicator=True)
+            df_clean = df_clean[df_clean['_merge'] == 'left_only'].drop(columns=['_merge'])
+
+                        
             logger.info(f"Dados limpos e normalizados. Shape final: {df_clean.shape}")
             return df_clean
             
