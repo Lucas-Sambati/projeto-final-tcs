@@ -258,6 +258,53 @@ class MartSetup:
             raise
         finally:
             self.close_connection(cursor)
+
+    def create_mart_view_fato_acidentes_mes_lesao(self):
+        """Cria a view de mart para acidentes lesao"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_fato_acidentes_mes_lesao AS (
+                SELECT
+                    mes,
+                    sexo,
+                    estado_empregador,
+                    natureza_lesao,
+                    agente_causador_acidente,
+                    DATE_PART('year', AGE(data_acidente, data_nascimento)) AS idade_pessoa,
+                    ROUND(
+                        SUM(CASE WHEN tipo_acidente = 'TÍPICO' THEN 1 ELSE 0 END)::NUMERIC
+                        /
+                        COUNT(*)::NUMERIC,
+                        4
+                    ) AS porcentagem_tipico,
+                    ROUND(
+                        SUM(CASE WHEN tipo_acidente = 'TRAJETO' THEN 1 ELSE 0 END)::NUMERIC
+                        /
+                        COUNT(*)::NUMERIC,
+                        4
+                    ) AS porcentagem_trajeto,
+                    ROUND(
+                        SUM(CASE WHEN tipo_acidente = 'DOENÇA' THEN 1 ELSE 0 END)::NUMERIC
+                        /
+                        COUNT(*)::NUMERIC,
+                        4
+                    ) AS porcentagem_doenca
+            FROM schema_core.acidente_trabalho
+            GROUP BY mes, estado_empregador, sexo, natureza_lesao, agente_causador_acidente, idade_pessoa
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_fato_acidentes_mes_lesao criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
     
     def create_mart_view_dim_tempo(self):
         """Cria a view de mart para tempo"""
@@ -362,17 +409,43 @@ class MartSetup:
             # SQL para criar a view de mart
             create_table_sql = """
             CREATE VIEW schema_mart.v_dim_municipio AS(
-            SELECT DISTINCT
-                m.municipio_ibge_descricao AS muncipio
+                SELECT DISTINCT
+                    m.municipio_ibge_descricao AS municipio,
+                    a.estado_empregador AS estado
             FROM schema_core.municipio m
             JOIN schema_core.acidente_trabalho a
             ON a.municipio_empregador_codigo = m.municipio_ibge_codigo
+            GROUP BY estado, m.municipio_ibge_descricao
+            ORDER BY municipio
             );
             """
             
             cursor.execute(create_table_sql)
             
             logger.info("View schema_mart.v_dim_time criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
+    def create_mart_view_dim_lesao(self):
+        """Cria a view de mart para lesao"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_dim_lesao AS(
+            SELECT DISTINCT
+                natureza_lesao AS lesao
+            FROM schema_core.acidente_trabalho
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_dim_lesao criada com sucesso!")
                 
         except Exception as e:
             logger.error(f"Erro ao criar tabela de mart: {e}")
@@ -389,6 +462,8 @@ class MartSetup:
 #        self.create_mart_view_dim_estado()
 #        self.create_mart_view_dim_sexo()
 #        self.create_mart_view_dim_setor()
-        self.create_mart_view_fato_acidentes_mes_localidade()
+#        self.create_mart_view_fato_acidentes_mes_localidade()
         self.create_mart_view_dim_municipio()
+        self.create_mart_view_fato_acidentes_mes_lesao()
+        self.create_mart_view_dim_lesao
         logger.info("Todas as views de mart foram criadas com sucesso!")
