@@ -49,46 +49,46 @@ def main():
         
         logger.info("=== INICIANDO SETUP DO DATA WAREHOUSE ===")
 
-#        # 0. Deletar banco de dados para atualizações
-#        dw_setup.delete_database()
-#        
-#        # 1. Criar banco de dados
-#        dw_setup.create_database_if_not_exists()
-#        
-#        # 2. Criar schemas
-#        dw_setup.create_schemas()
-#        
-#        logger.info("=== SETUP DO DO DATA WAREHOUSE CONCLUÍDO ===")
-#
-#        logger.info("=== INICIANDO SETUP DO STAGE ===") 
-#
-#        # 3. Criar tabelas auxiliares no stage
-#        stage_setup.create_stage_table_auxiliar()
-#
-#        # 4. Carregar dados CSV auxiliares para o stage
-#        stage_setup.load_csv_files_auxiliar()
-#
-#        # 5. Criar tabela principal no stage
-#        stage_setup.create_stage_table_acidente()
-#        
-#        # 6. Carregar dados CSV principal para o stage
-#        stage_setup.load_csv_files_acidente(data_folder)
-#        
-#        logger.info("=== SETUP DO STAGE CONCLUÍDO ===")
-#        
-#        logger.info("=== INICIANDO SETUP DO CORE ===") 
-#
-#        # 7. Criar tabelas auxiliares no core
-#        core_setup.create_core_table_auxiliar()
-#
-#        # 8. Carregar dados das tabelas auxiliares do stage para o core
-#        core_setup.load_data_from_stage_to_core_auxiliar()
-#
-#        # 9. Criar tabela principal no core 
-#        core_setup.create_core_table_acidente()
-#
-#        # 10. Carregar dados da stage para o core
-#        core_setup.load_data_from_stage_to_core_acidente()
+        # 0. Deletar banco de dados para atualizações
+        dw_setup.delete_database()
+        
+        # 1. Criar banco de dados
+        dw_setup.create_database_if_not_exists()
+        
+        # 2. Criar schemas
+        dw_setup.create_schemas()
+        
+        logger.info("=== SETUP DO DO DATA WAREHOUSE CONCLUÍDO ===")
+
+        logger.info("=== INICIANDO SETUP DO STAGE ===") 
+
+        # 3. Criar tabelas auxiliares no stage
+        stage_setup.create_stage_table_auxiliar()
+
+        # 4. Carregar dados CSV auxiliares para o stage
+        stage_setup.load_csv_files_auxiliar()
+
+        # 5. Criar tabela principal no stage
+        stage_setup.create_stage_table_acidente()
+        
+        # 6. Carregar dados CSV principal para o stage
+        stage_setup.load_csv_files_acidente(data_folder)
+        
+        logger.info("=== SETUP DO STAGE CONCLUÍDO ===")
+        
+        logger.info("=== INICIANDO SETUP DO CORE ===") 
+
+        # 7. Criar tabelas auxiliares no core
+        core_setup.create_core_table_auxiliar()
+
+        # 8. Carregar dados das tabelas auxiliares do stage para o core
+        core_setup.load_data_from_stage_to_core_auxiliar()
+
+        # 9. Criar tabela principal no core 
+        core_setup.create_core_table_acidente()
+
+        # 10. Carregar dados da stage para o core
+        core_setup.load_data_from_stage_to_core_acidente()
         
         logger.info("=== SETUP DO DO CORE CONCLUÍDO ===")
 
