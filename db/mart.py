@@ -226,6 +226,38 @@ class MartSetup:
             raise
         finally:
             self.close_connection(cursor)
+
+    def create_mart_view_fato_acidentes_mes_localidade(self):
+        """Cria a view de mart para acidentes localidade"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_fato_acidentes_mes_localidade AS (
+                SELECT 
+                    mes, 
+                    estado_empregador, 
+                    sexo, 
+                    m.municipio_ibge_descricao AS municipio, 
+                    COUNT(*) AS total_acidentes,
+                    SUM(CASE WHEN indica_obito_acidente = 'SIM' THEN 1 ELSE 0 END) AS total_mortes
+            FROM schema_core.acidente_trabalho a
+            JOIN schema_core.municipio m
+            ON a.municipio_empregador_codigo = m.municipio_ibge_codigo
+            GROUP BY mes, estado_empregador, sexo, municipio
+            ORDER BY total_acidentes DESC
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_fato_acidentes_mes_localidade criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
     
     def create_mart_view_dim_tempo(self):
         """Cria a view de mart para tempo"""
@@ -323,13 +355,40 @@ class MartSetup:
         finally:
             self.close_connection(cursor)
 
+    def create_mart_view_dim_municipio(self):
+        """Cria a view de mart para municipio"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_dim_municipio AS(
+            SELECT DISTINCT
+                m.municipio_ibge_descricao AS muncipio
+            FROM schema_core.municipio m
+            JOIN schema_core.acidente_trabalho a
+            ON a.municipio_empregador_codigo = m.municipio_ibge_codigo
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_dim_time criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+
     def create_mart_views(self):
         """Executa a criação das views no mart"""
-        self.create_mart_view_fato_acidentes_mes_metricas()
-        self.create_mart_view_fato_acidentes_mes_estado()
-        self.create_mart_view_fato_acidentes_mes_setor()
-        self.create_mart_view_dim_tempo()
-        self.create_mart_view_dim_estado()
-        self.create_mart_view_dim_sexo()
-        self.create_mart_view_dim_setor()
+#        self.create_mart_view_fato_acidentes_mes_metricas()
+#        self.create_mart_view_fato_acidentes_mes_estado()
+#        self.create_mart_view_fato_acidentes_mes_setor()
+#        self.create_mart_view_dim_tempo()
+#        self.create_mart_view_dim_estado()
+#        self.create_mart_view_dim_sexo()
+#        self.create_mart_view_dim_setor()
+        self.create_mart_view_fato_acidentes_mes_localidade()
+        self.create_mart_view_dim_municipio()
         logger.info("Todas as views de mart foram criadas com sucesso!")
