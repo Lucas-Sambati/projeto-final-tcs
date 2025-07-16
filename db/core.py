@@ -332,7 +332,7 @@ class CoreSetup:
             raise
         finally:
             self.close_connection(cursor)
-    
+
     def create_core_table_municipio(self):
         """Cria a tabela de core para municipios"""
         try:
