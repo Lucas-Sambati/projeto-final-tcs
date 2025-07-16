@@ -217,7 +217,7 @@ class IASetup:
             try:
                 logger.info("Iniciando carregamento de dados da ia para core")
 
-                df_ia = df_ia.head(2)
+                #df_ia = df_ia.head(2)
                 grouped_insights = []
 
                 for (estado, setor), group in df_ia.groupby(['estado', 'setor']):
