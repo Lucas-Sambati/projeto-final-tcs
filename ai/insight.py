@@ -123,7 +123,8 @@ class IASetup:
                 id SERIAL PRIMARY KEY,
                 estado VARCHAR,
                 setor VARCHAR,
-                insight TEXT
+                insight TEXT,
+                total_acidentes INT
             );
             """
             
@@ -216,7 +217,7 @@ class IASetup:
             try:
                 logger.info("Iniciando carregamento de dados da ia para core")
 
-                #df_ia = df_ia.head(1)
+                df_ia = df_ia.head(2)
                 grouped_insights = []
 
                 for (estado, setor), group in df_ia.groupby(['estado', 'setor']):
@@ -224,6 +225,9 @@ class IASetup:
                     grouped_insights.append({'estado': estado, 'setor': setor, 'insight': insight})
                 
                 df_resultado = pd.DataFrame(grouped_insights)
+
+                df_ia['total_acidentes'] = df_ia.groupby(['estado', 'setor'])['id'].transform('count')
+                df_resultado = df_resultado.merge(df_ia[['estado', 'setor', 'total_acidentes']], on=['estado', 'setor'], how='left')
 
                 cursor = self.get_connection()
 
