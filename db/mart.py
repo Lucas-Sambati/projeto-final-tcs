@@ -293,7 +293,7 @@ class MartSetup:
                         4
                     ) AS porcentagem_doenca
             FROM schema_core.acidente_trabalho
-            GROUP BY mes, estado_empregador, sexo, natureza_lesao, agente_causador_acidente, idade_pessoa, total_acidentes
+            GROUP BY mes, estado_empregador, sexo, natureza_lesao, agente_causador_acidente, idade_pessoa
             );
             """
             
