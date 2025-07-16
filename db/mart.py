@@ -409,19 +409,44 @@ class MartSetup:
             CREATE VIEW schema_mart.v_dim_setor AS(
             SELECT DISTINCT
                 c.cnae_codigo AS setor_id,
-                c.cnae_descricao AS setor_descricao,
-                a.estado_empregador AS estado
+                c.cnae_descricao AS setor_descricao
             FROM schema_core.cnae c
             JOIN schema_core.acidente_trabalho a
             ON c.cnae_codigo = a.cnae_empregador_codigo
-            GROUP BY a.estado_empregador, c.cnae_codigo, c.cnae_descricao
-            ORDER BY a.estado_empregador
             );
             """
             
             cursor.execute(create_table_sql)
             
             logger.info("View schema_mart.v_dim_time criada com sucesso!")
+                
+        except Exception as e:
+            logger.error(f"Erro ao criar tabela de mart: {e}")
+            raise
+        finally:
+            self.close_connection(cursor)
+    
+    def create_mart_view_dim_setor_estado(self):
+        """Cria a view de mart para setor"""
+        try:
+            cursor = self.get_connection()
+            # SQL para criar a view de mart
+            create_table_sql = """
+            CREATE VIEW schema_mart.v_dim_setor_estado AS(
+            SELECT DISTINCT
+                c.cnae_descricao AS setor_descricao,
+                a.estado_empregador AS estado
+            FROM schema_core.cnae c
+            JOIN schema_core.acidente_trabalho a
+            ON c.cnae_codigo = a.cnae_empregador_codigo
+            GROUP BY a.estado_empregador, c.cnae_descricao
+            ORDER BY a.estado_empregador
+            );
+            """
+            
+            cursor.execute(create_table_sql)
+            
+            logger.info("View schema_mart.v_dim_setor_estado criada com sucesso!")
                 
         except Exception as e:
             logger.error(f"Erro ao criar tabela de mart: {e}")
@@ -489,6 +514,7 @@ class MartSetup:
 #        self.create_mart_view_dim_estado()
 #        self.create_mart_view_dim_sexo()
         self.create_mart_view_dim_setor()
+        self.create_mart_view_dim_setor_estado()
 #        self.create_mart_view_fato_acidentes_mes_localidade()
 #        self.create_mart_view_dim_municipio()
 #        self.create_mart_view_fato_acidentes_mes_lesao()
