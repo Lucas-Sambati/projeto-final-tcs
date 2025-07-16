@@ -98,14 +98,14 @@ def main():
 #
 #        # 10. Carregar dados da stage para o core
 #        core_setup.load_data_from_stage_to_core_acidente()
-
-        # 11. Criar tabela insight no core
-        ia_setup.create_core_table_insight()
-
-        # 12. Carregar insights da ia para o core
-        ia_setup.load_data_from_core_to_full_dataset()
-        
-        logger.info("=== SETUP DO DO CORE CONCLUÍDO ===")
+#
+#        # 11. Criar tabela insight no core
+#        ia_setup.create_core_table_insight()
+#
+#        # 12. Carregar insights da ia para o core
+#        ia_setup.load_data_from_core_to_full_dataset()
+#        
+#        logger.info("=== SETUP DO DO CORE CONCLUÍDO ===")
 
         logger.info("=== INICIANDO SETUP DO MART ===") 
 
