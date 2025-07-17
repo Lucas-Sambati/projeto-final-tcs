@@ -331,28 +331,33 @@ class MartSetup:
             self.close_connection(cursor)
     
     def create_mart_view_dim_tempo(self):
-        """Cria a view de mart para tempo"""
+        """Cria a view de mart para tempo com os meses em ordem correta"""
         try:
             cursor = self.get_connection()
-            # SQL para criar a view de mart
             create_table_sql = """
-            CREATE VIEW schema_mart.v_dim_tempo AS(
-            SELECT DISTINCT
-                mes
+            CREATE OR REPLACE VIEW schema_mart.v_dim_tempo AS (
+            SELECT mes
             FROM schema_core.acidente_trabalho
             WHERE data_acidente IS NOT NULL
+            GROUP BY mes
+            ORDER BY 
+                CASE mes
+                    WHEN 'JANEIRO' THEN 1
+                    WHEN 'FEVEREIRO' THEN 2
+                    WHEN 'MARCO' THEN 3
+                    WHEN 'ABRIL' THEN 4
+                    WHEN 'MAIO' THEN 5
+                END
             );
             """
-            
             cursor.execute(create_table_sql)
-            
             logger.info("View schema_mart.v_dim_tempo criada com sucesso!")
-                
         except Exception as e:
             logger.error(f"Erro ao criar tabela de mart: {e}")
             raise
         finally:
             self.close_connection(cursor)
+
 
     def create_mart_view_dim_estado(self):
         """Cria a view de mart para estado"""
