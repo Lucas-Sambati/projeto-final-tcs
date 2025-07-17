@@ -227,7 +227,13 @@ class IASetup:
                 df_resultado = pd.DataFrame(grouped_insights)
 
                 df_ia['total_acidentes'] = df_ia.groupby(['estado', 'setor'])['id'].transform('count')
-                df_resultado = df_resultado.merge(df_ia[['estado', 'setor', 'total_acidentes']], on=['estado', 'setor'], how='left')
+                df_ia['total_acidentes'] = df_ia.groupby(['estado', 'setor'])['id'].transform('count')
+                # Pega apenas um valor único de total_acidentes por grupo
+                totais_unicos = df_ia.groupby(['estado', 'setor'])['id'].count().reset_index()
+                totais_unicos.rename(columns={'id': 'total_acidentes'}, inplace=True)
+
+                # Faz o merge com valores únicos
+                df_resultado = df_resultado.merge(totais_unicos, on=['estado', 'setor'], how='left')
 
                 cursor = self.get_connection()
 
@@ -258,4 +264,54 @@ class IASetup:
             
         except Exception as e:
             logger.error(f"Erro ao carregar dados da core para o df_ia: {e}")
+            raise
+
+    def load_csv_file_insight(self):
+        """Carrega o arquivo CSV insight para sua tabela de core"""
+        try:
+            data_folder_path = os.path.join(os.path.dirname(__file__), '../data/auxiliar')
+
+            # Busca o arquivo CSV
+            csv_files = glob.glob(os.path.join(data_folder_path, "insights.csv"))
+            
+            if not csv_files:
+                logger.warning(f"Nenhum arquivo CSV encontrado em {data_folder_path}")
+                return
+            
+            logger.info(f"Encontrado {len(csv_files)} arquivo CSV para processar")
+            
+            total_records = 0
+            
+            for csv_file in csv_files:
+                try:
+                    arquivo_nome = os.path.basename(csv_file)
+                    logger.info(f"Processando arquivo: {arquivo_nome}")
+                    
+                    # Ler CSV com encoding adequado
+                    df = pd.read_csv(csv_file, sep=',', encoding='utf-8', low_memory=False)
+                    
+                    logger.info(f"Arquivo {arquivo_nome} carregado com {len(df)} registros")
+                    
+                    # Carregar dados na tabela
+                    df.to_sql(
+                        name='insight',
+                        con=self.engine,
+                        schema='schema_core',
+                        if_exists='append',
+                        index=False,
+                        method='multi',
+                        chunksize=1000
+                    )
+                    
+                    total_records += len(df)
+                    logger.info(f"Arquivo {arquivo_nome} carregado com sucesso! {len(df)} registros inseridos")
+                    
+                except Exception as e:
+                    logger.error(f"Erro ao processar arquivo {csv_file}: {e}")
+                    continue
+            
+            logger.info(f"Carga concluída! Total de registros inseridos: {total_records}")
+            
+        except Exception as e:
+            logger.error(f"Erro ao carregar arquivos CSV: {e}")
             raise
