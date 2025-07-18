@@ -218,7 +218,7 @@ class MartSetup:
                     tipo_acidente, 
                     COUNT(*) as total_acidentes
             FROM schema_core.acidente_trabalho
-            GROUP BY mes, estado_empregador, setor_id, natureza_lesao, tipo_acidente
+            GROUP BY mes, estado_empregador, setor_id, tipo_acidente, natureza_lesao
             );
             """
             
@@ -475,7 +475,6 @@ class MartSetup:
         self.create_mart_view_fato_acidentes_mes_setor()
         self.create_mart_view_dim_tempo()
         self.create_mart_view_dim_estado()
-        self.create_mart_view_dim_sexo()
         self.create_mart_view_dim_setor()
         self.create_mart_view_fato_acidentes_mes_localidade()
         self.create_mart_view_dim_municipio()
