@@ -106,14 +106,14 @@ def main():
 #        ia_setup.load_data_from_core_to_full_dataset()
 
         # 13. Carregar insights pré-gerados (comentar passo 12 entao)
-        ia_setup.load_csv_file_insight()
+#        ia_setup.load_csv_file_insight()
         
         logger.info("=== SETUP DO DO CORE CONCLUÍDO ===")
 
         logger.info("=== INICIANDO SETUP DO MART ===") 
 
         # 14. Criar views de mart
-#        mart_setup.create_mart_views()
+        mart_setup.create_mart_views()
 
         logger.info("=== SETUP DO DO MART CONCLUÍDO ===")
         

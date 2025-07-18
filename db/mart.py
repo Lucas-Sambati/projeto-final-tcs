@@ -92,19 +92,22 @@ class MartSetup:
             CREATE OR REPLACE VIEW schema_mart.v_fato_acidentes_mes_metricas AS(
             WITH acidentes AS (
                 SELECT
-                    mes,
-                    indica_obito_acidente,
-                    cid_10_codigo,
-                    sexo,
-                    cnae_empregador_codigo,
-                    estado_empregador
-                FROM schema_core.acidente_trabalho
+                    a.mes,
+                    a.indica_obito_acidente,
+                    a.cid_10_codigo,
+                    a.sexo,
+                    a.cnae_empregador_codigo,
+                    a.estado_empregador,
+                    c.cnae_descricao AS setor
+                FROM schema_core.acidente_trabalho a
+                JOIN schema_core.cnae c
+                ON a.cnae_empregador_codigo = c.cnae_codigo
             )
             SELECT
-            mes,
-			estado_empregador,
-			sexo,
             COUNT(*) AS total_acidentes,
+            estado_empregador,
+            setor,
+            mes,
             ROUND(
                 SUM(CASE WHEN indica_obito_acidente = 'SIM' THEN 1 ELSE 0 END)::NUMERIC
                 /
@@ -116,8 +119,8 @@ class MartSetup:
                 SELECT a2.cid_10_codigo
                 FROM acidentes a2
                 WHERE a2.mes = a1.mes 
-				AND a2.estado_empregador = a1.estado_empregador
-				AND a2.sexo = a1.sexo
+                AND a2.estado_empregador = a1.estado_empregador
+                AND a2.setor = a1.setor
                 GROUP BY a2.cid_10_codigo
                 ORDER BY COUNT(*) DESC
                 LIMIT 1
@@ -128,8 +131,8 @@ class MartSetup:
                 FROM acidentes a2
                 JOIN schema_core.cid10 c ON a2.cid_10_codigo = c.cid10_codigo
                 WHERE a2.mes = a1.mes 
-				AND a2.estado_empregador = a1.estado_empregador
-				AND a2.sexo = a1.sexo
+                AND a2.estado_empregador = a1.estado_empregador
+                AND a2.setor = a1.setor
                 GROUP BY c.cid10_descricao
                 ORDER BY COUNT(*) DESC
                 LIMIT 1
@@ -139,8 +142,8 @@ class MartSetup:
                 SELECT a2.sexo
                 FROM acidentes a2
                 WHERE a2.mes = a1.mes 
-				AND a2.estado_empregador = a1.estado_empregador
-				AND a2.sexo = a1.sexo
+                AND a2.estado_empregador = a1.estado_empregador
+                AND a2.setor = a1.setor
                 GROUP BY a2.sexo
                 ORDER BY COUNT(*) DESC
                 LIMIT 1
@@ -151,15 +154,16 @@ class MartSetup:
                 FROM acidentes a2
                 JOIN schema_core.cnae c ON a2.cnae_empregador_codigo = c.cnae_codigo
                 WHERE a2.mes = a1.mes 
-				AND a2.estado_empregador = a1.estado_empregador
-				AND a2.sexo = a1.sexo
+                AND a2.estado_empregador = a1.estado_empregador
+                AND a2.setor = a1.setor
                 GROUP BY c.cnae_descricao
                 ORDER BY COUNT(*) DESC
                 LIMIT 1
             ) AS cnae_recorrente
 
             FROM acidentes a1
-            GROUP BY mes, estado_empregador, sexo
+            GROUP BY mes, estado_empregador, setor
+            ORDER BY total_acidentes DESC
             );
             """
             
@@ -180,9 +184,11 @@ class MartSetup:
             # SQL para criar a view de mart
             create_table_sql = """
             CREATE OR REPLACE VIEW schema_mart.v_fato_acidentes_mes_estados AS(
-                SELECT estado_empregador as estado, sexo, COUNT(*) as total_acidentes, mes  
-            FROM schema_core.acidente_trabalho
-            GROUP BY estado_empregador, mes, sexo
+                SELECT estado_empregador as estado, c.cnae_descricao AS setor, COUNT(*) as total_acidentes, mes  
+            FROM schema_core.acidente_trabalho a
+            JOIN schema_core.cnae c
+            ON c.cnae_codigo = a.cnae_empregador_codigo
+            GROUP BY estado_empregador, mes, setor
             ORDER BY total_acidentes DESC
             );
             """
@@ -207,13 +213,12 @@ class MartSetup:
                 SELECT 
                     mes, 
                     estado_empregador, 
-                    sexo, 
                     cnae_empregador_codigo AS setor_id, 
                     natureza_lesao, 
                     tipo_acidente, 
                     COUNT(*) as total_acidentes
             FROM schema_core.acidente_trabalho
-            GROUP BY mes, estado_empregador, sexo, setor_id, natureza_lesao, tipo_acidente
+            GROUP BY mes, estado_empregador, setor_id, natureza_lesao, tipo_acidente
             );
             """
             
@@ -237,14 +242,16 @@ class MartSetup:
                 SELECT 
                     mes, 
                     estado_empregador, 
-                    sexo, 
+                    c.cnae_descricao AS setor,
                     m.municipio_ibge_descricao AS municipio, 
                     COUNT(*) AS total_acidentes,
                     SUM(CASE WHEN indica_obito_acidente = 'SIM' THEN 1 ELSE 0 END) AS total_mortes
             FROM schema_core.acidente_trabalho a
             JOIN schema_core.municipio m
             ON a.municipio_empregador_codigo = m.municipio_ibge_codigo
-            GROUP BY mes, estado_empregador, sexo, municipio
+            JOIN schema_core.cnae c
+            ON c.cnae_codigo = a.cnae_empregador_codigo
+            GROUP BY mes, estado_empregador, setor, municipio
             ORDER BY total_acidentes DESC
             );
             """
@@ -268,8 +275,8 @@ class MartSetup:
             CREATE VIEW schema_mart.v_fato_acidentes_mes_lesao AS (
                 SELECT
                     mes,
-                    sexo,
                     estado_empregador,
+                    c.cnae_descricao AS setor,
                     natureza_lesao,
                     agente_causador_acidente,
                     DATE_PART('year', AGE(data_acidente, data_nascimento)) AS idade_pessoa,
@@ -292,8 +299,10 @@ class MartSetup:
                         COUNT(*)::NUMERIC,
                         4
                     ) AS porcentagem_doenca
-            FROM schema_core.acidente_trabalho
-            GROUP BY mes, estado_empregador, sexo, natureza_lesao, agente_causador_acidente, idade_pessoa
+            FROM schema_core.acidente_trabalho a
+            JOIN schema_core.cnae c
+            ON c.cnae_codigo = a.cnae_empregador_codigo
+            GROUP BY mes, estado_empregador, setor, natureza_lesao, agente_causador_acidente, idade_pessoa
             );
             """
             
@@ -375,29 +384,6 @@ class MartSetup:
             cursor.execute(create_table_sql)
             
             logger.info("View schema_mart.v_dim_estado criada com sucesso!")
-                
-        except Exception as e:
-            logger.error(f"Erro ao criar tabela de mart: {e}")
-            raise
-        finally:
-            self.close_connection(cursor)
-    
-    def create_mart_view_dim_sexo(self):
-        """Cria a view de mart para sexo"""
-        try:
-            cursor = self.get_connection()
-            # SQL para criar a view de mart
-            create_table_sql = """
-            CREATE VIEW schema_mart.v_dim_sexo AS(
-            SELECT DISTINCT
-                sexo
-            FROM schema_core.acidente_trabalho
-            );
-            """
-            
-            cursor.execute(create_table_sql)
-            
-            logger.info("View schema_mart.v_dim_sexo criada com sucesso!")
                 
         except Exception as e:
             logger.error(f"Erro ao criar tabela de mart: {e}")
