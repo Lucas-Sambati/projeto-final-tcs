@@ -204,13 +204,6 @@ class CoreSetup:
             # Crie uma lista com as descrições completas
             agente_descricao_list = self.df_natureza_lesao['natureza_descricao'].str.upper().tolist()
 
-            # Função para encontrar a melhor correspondência
-            def find_best_match(value, choices):
-                matches = difflib.get_close_matches(value, choices, n=1, cutoff=0.3)
-                if matches:
-                    return matches[0]
-                return value  # Se não encontrar, mantém o original
-
             # Corrigir a coluna 'natureza_lesao'
             df_clean['natureza_lesao'] = df_clean['natureza_lesao'].apply(
                 lambda x: find_best_match(x, agente_descricao_list)

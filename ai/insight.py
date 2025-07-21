@@ -86,7 +86,7 @@ class IASetup:
         except Exception as e:
             logger.error(f"Erro ao fechar conexão: {e}")
 
-    def gerar_insight(self, estado, setor, df_subset):
+    def gen_insight(self, estado, setor, df_subset):
         try:
             amostras = df_subset.sample(n=min(10, len(df_subset)))
             exemplos = "\n".join([
@@ -221,7 +221,7 @@ class IASetup:
                 grouped_insights = []
 
                 for (estado, setor), group in df_ia.groupby(['estado', 'setor']):
-                    insight = self.gerar_insight(estado, setor, group)
+                    insight = self.gen_insight(estado, setor, group)
                     grouped_insights.append({'estado': estado, 'setor': setor, 'insight': insight})
                 
                 df_resultado = pd.DataFrame(grouped_insights)
